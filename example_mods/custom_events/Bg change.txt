@@ -1,0 +1,7 @@
+makes a bg object invisible/visible
+
+Value 1: The object u wanna change
+Value 2: Visible or invisible 
+
+0 = invisible
+1 = visible
