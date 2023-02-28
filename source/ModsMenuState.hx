@@ -31,14 +31,14 @@ import flash.geom.Rectangle;
 import flixel.ui.FlxButton;
 import flixel.FlxBasic;
 import sys.io.File;
-import openfl.net.FileReference;
+/* import openfl.net.FileReference;
 import openfl.*;
 import sys.io.*;
 import haxe.zip.*;
 import haxe.zip.Reader;
 import haxe.zip.Entry;
 import haxe.zip.Uncompress;
-import haxe.zip.Writer;
+import haxe.zip.Writer; */
 
 using StringTools;
 
@@ -68,8 +68,10 @@ class ModsMenuState extends MusicBeatState
 	var buttonToggle:FlxButton;
 	var buttonsArray:Array<FlxButton> = [];
 
+	/*
 	var installButton:FlxButton;
 	var removeButton:FlxButton;
+	*/
 
 	var modsList:Array<Dynamic> = [];
 
@@ -272,6 +274,7 @@ class ModsMenuState extends MusicBeatState
 		// more buttons
 		var startX:Int = 1100;
 
+		/* 
 		installButton = new FlxButton(startX, 620, "Install Mod", function()
 		{
 			installMod();
@@ -322,8 +325,8 @@ class ModsMenuState extends MusicBeatState
 		setAllLabelsOffset(removeButton, 2, 15);
 		add(removeButton);
 		visibleWhenHasMods.push(removeButton);
+		*/
 
-		///////
 		descriptionTxt = new FlxText(148, 0, FlxG.width - 216, "", 32);
 		descriptionTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, LEFT);
 		descriptionTxt.scrollFactor.set();
@@ -394,16 +397,6 @@ class ModsMenuState extends MusicBeatState
 		FlxG.mouse.visible = true;
 
 		super.create();
-	}
-
-	function getIntArray(max:Int):Array<Int>
-	{
-		var arr:Array<Int> = [];
-		for (i in 0...max)
-		{
-			arr.push(i);
-		}
-		return arr;
 	}
 
 	function addToModsList(values:Array<Dynamic>)
@@ -596,7 +589,7 @@ class ModsMenuState extends MusicBeatState
 				}
 
 				// correct layering
-				var stuffArray:Array<FlxSprite> = [removeButton, installButton, selector, descriptionTxt, mod.alphabet, mod.icon];
+				var stuffArray:Array<FlxSprite> = [removeButton, /* installButton, selector,*/ descriptionTxt, mod.alphabet, mod.icon];
 				for (obj in stuffArray)
 				{
 					remove(obj);
@@ -682,7 +675,7 @@ class ModsMenuState extends MusicBeatState
 
 	var _file:FileReference = null;
 
-	function installMod()
+	/* function installMod()
 	{
 		var zipFilter:FileFilter = new FileFilter('ZIP', 'zip');
 		_file = new FileReference();
@@ -743,6 +736,7 @@ class ModsMenuState extends MusicBeatState
 		canExit = true;
 		trace("Problem loading file");
 	}
+	*/
 }
 
 class ModMetadata
@@ -800,7 +794,7 @@ class ModMetadata
 
 				this.restart = restart;
 
-				if (stuff.name != null && stuff.name.length > 0)
+				/* if (stuff.name != null && stuff.name.length > 0)
 				{
 					this.name = stuff.name;
 				}
@@ -811,7 +805,7 @@ class ModMetadata
 				if (stuff.color != null && stuff.color.length > 2)
 				{
 					this.color = FlxColor.fromRGB(stuff.color[0], stuff.color[1], stuff.color[2]);
-				}
+				} *?
 			}
 		}
 	}
