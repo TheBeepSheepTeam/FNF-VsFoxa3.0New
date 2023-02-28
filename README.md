@@ -21,6 +21,9 @@ same goes for *Lua Scripts*, comment out or delete the line with `LUA_ALLOWED`, 
 ## Kooker - Main Credits
 * KookerFoxYT/CharlesCatYT - Programmer
 
+### Kooker - Special Thanks
+* BeastyGabi - Main Menu Customization
+
 ## Psych - Main Credits:
 * Shadow Mario - Programmer
 * RiverOaken - Artist
