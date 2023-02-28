@@ -736,7 +736,6 @@ class ModsMenuState extends MusicBeatState
 		canExit = true;
 		trace("Problem loading file");
 	}
-		* /
 }
 
 class ModMetadata
