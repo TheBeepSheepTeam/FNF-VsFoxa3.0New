@@ -3226,10 +3226,10 @@ class PlayState extends MusicBeatState
 
 		/*
 
-		    FlxG.watch.addQuick('VOL', vocals.amplitudeLeft);
-		    FlxG.watch.addQuick('VOLRight', vocals.amplitudeRight);
+		FlxG.watch.addQuick('VOL', vocals.amplitudeLeft);
+		FlxG.watch.addQuick('VOLRight', vocals.amplitudeRight);
 
-	    */
+	 */
 
 		recalculateIconAnimations();
 
@@ -5690,12 +5690,10 @@ class PlayState extends MusicBeatState
 		if (cpuControlled)
 		{
 			iconP1.changeIcon(boyfriend.healthIcon);
-			iconP1Poison.changeIcon(boyfriend.healthIcon);
 		}
 		else if (iconP1.getCharacter() != boyfriend.healthIcon)
 		{
 			iconP1.changeIcon(boyfriend.healthIcon);
-			iconP1Poison.changeIcon(boyfriend.healthIcon);
 		}
 		if (!forceNeutral)
 		{
@@ -5703,33 +5701,27 @@ class PlayState extends MusicBeatState
 			{
 				case 150:
 					iconP1.animation.curAnim.curFrame = 0; // Neutral BF
-					iconP1Poison.animation.curAnim.curFrame = 0;
 				case 300:
 					if (healthBar.percent < 20)
 					{
 						iconP1.animation.curAnim.curFrame = 1; // Losing BF
-						iconP1Poison.animation.curAnim.curFrame = 1;
 					}
 					else if (healthBar.percent > 20)
 					{
 						iconP1.animation.curAnim.curFrame = 0; // Neutral BF
-						iconP1Poison.animation.curAnim.curFrame = 0;
 					}
 				case 450:
 					if (healthBar.percent < 20)
 					{
 						iconP1.animation.curAnim.curFrame = 1; // Losing BF
-						iconP1Poison.animation.curAnim.curFrame = 1;
 					}
 					else if (healthBar.percent > 20 && healthBar.percent < 80)
 					{
 						iconP1.animation.curAnim.curFrame = 0; // Neutral BF
-						iconP1Poison.animation.curAnim.curFrame = 0;
 					}
 					else if (healthBar.percent > 80)
 					{
 						iconP1.animation.curAnim.curFrame = 2; // Winning BF
-						iconP1Poison.animation.curAnim.curFrame = 2;
 					}
 			}
 			switch (iconP2.widthThing)
@@ -5763,9 +5755,7 @@ class PlayState extends MusicBeatState
 		else
 		{
 			iconP1.animation.curAnim.curFrame = 0;
-			iconP1Poison.animation.curAnim.curFrame = 0;
 			iconP2.animation.curAnim.curFrame = 0;
-			iconP4.animation.curAnim.curFrame = 0;
 		}
 	}
 
