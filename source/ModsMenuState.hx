@@ -805,7 +805,7 @@ class ModMetadata
 				if (stuff.color != null && stuff.color.length > 2)
 				{
 					this.color = FlxColor.fromRGB(stuff.color[0], stuff.color[1], stuff.color[2]);
-				} *?
+				} */
 			}
 		}
 	}
