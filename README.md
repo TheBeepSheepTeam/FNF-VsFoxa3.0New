@@ -52,6 +52,7 @@ _____________________________________
 * Probably one of the main points of this engine, you can code in .lua files outside of the source code, making your own weeks without even messing with the source!
 * Comes with a Mod Organizing/Disabling Menu.
 * You can code in options without modifying the source code.
+* You can code in a custom main menu without source.
 
 
 ## Atleast one change to every week:
