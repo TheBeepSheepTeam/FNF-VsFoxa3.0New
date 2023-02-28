@@ -3225,7 +3225,7 @@ class PlayState extends MusicBeatState
 		}
 
 		/*
-		
+
 		    FlxG.watch.addQuick('VOL', vocals.amplitudeLeft);
 		    FlxG.watch.addQuick('VOLRight', vocals.amplitudeRight);
 
@@ -5543,7 +5543,7 @@ class PlayState extends MusicBeatState
 						iconP2.scale.set(0.3, 1.7);
 					} : {
 						iconP1.scale.set(0.3, 1.3);
-						iconP2.scale.set(1.3, 0.3)
+						iconP2.scale.set(1.3, 0.3);
 						}
 
 					FlxTween.tween(iconP1, {'scale.x': 1, 'scale.y': 1}, Conductor.crochet / 1250 / playbackRate * gfSpeed, {ease: FlxEase.quadOut});
