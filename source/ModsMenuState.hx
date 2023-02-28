@@ -26,10 +26,10 @@ import flash.geom.Rectangle;
 import flixel.ui.FlxButton;
 import flixel.FlxBasic;
 import sys.io.File;
-/*import haxe.zip.Reader;
+import haxe.zip.Reader;
 import haxe.zip.Entry;
 import haxe.zip.Uncompress;
-import haxe.zip.Writer;*/
+import haxe.zip.Writer;
 
 using StringTools;
 
@@ -646,7 +646,7 @@ class ModsMenuState extends MusicBeatState
 		selector.pixels.fillRect(new Rectangle((flipX ? antiX : 8), Std.int(Math.abs(antiY - 1)),  3, 1), FlxColor.BLACK);
 	}
 
-	/*var _file:FileReference = null;
+	var _file:FileReference = null;
 	function installMod() {
 		var zipFilter:FileFilter = new FileFilter('ZIP', 'zip');
 		_file = new FileReference();
