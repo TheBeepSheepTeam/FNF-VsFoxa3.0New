@@ -589,7 +589,7 @@ class ModsMenuState extends MusicBeatState
 				}
 
 				// correct layering
-				var stuffArray:Array<FlxSprite> = [removeButton, /* installButton, selector,*/ descriptionTxt, mod.alphabet, mod.icon];
+				var stuffArray:Array<FlxSprite> = [/* removeButton, installButton, selector,*/ descriptionTxt, mod.alphabet, mod.icon];
 				for (obj in stuffArray)
 				{
 					remove(obj);
