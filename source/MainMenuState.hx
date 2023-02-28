@@ -53,7 +53,8 @@ class MainMenuState extends MusicBeatState
 	var menuItems:FlxTypedGroup<FlxSprite>;
 	private var camGame:FlxCamera;
 	private var camAchievement:FlxCamera;
-		public static var firstStart:Bool = true;
+	public static var firstStart:Bool = true;
+	public static var finishedFunnyMove:Bool = false;
 
 	var optionShit:Array<String> = [];
 	var linkArray:Array<Array<String>> = [];
