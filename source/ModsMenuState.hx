@@ -673,7 +673,7 @@ class ModsMenuState extends MusicBeatState
 		selector.pixels.fillRect(new Rectangle((flipX ? antiX : 8), Std.int(Math.abs(antiY - 1)), 3, 1), FlxColor.BLACK);
 	}
 
-	var _file:FileReference = null;
+	// var _file:FileReference = null;
 
 	/* function installMod()
 	{
