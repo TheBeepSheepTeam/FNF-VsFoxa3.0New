@@ -3256,8 +3256,6 @@ class PlayState extends MusicBeatState
 				iconP1.scale.set(mult, mult);
 				iconP1.updateHitbox();
 				iconP2.updateHitbox();
-
-				var mult:Float = FlxMath.lerp(0.75, iconP4.scale.x, CoolUtil.boundTo(1 - (elapsed * 9 * playbackRate), 0, 1));
 		}
 
 		var iconOffset:Int = 26;

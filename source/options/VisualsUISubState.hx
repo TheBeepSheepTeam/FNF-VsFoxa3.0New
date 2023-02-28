@@ -158,7 +158,7 @@ class VisualsUISubState extends BaseOptionsMenu
 
 	function onChangeSwing()
 		{
-			iconSwing = ClientPrefs.iconSwing;
+			var iconSwing = ClientPrefs.iconSwing;
 		}
 
 	override function destroy()
