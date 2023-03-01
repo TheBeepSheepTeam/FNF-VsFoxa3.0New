@@ -229,6 +229,7 @@ class CustomMenuState extends MusicBeatState
 				return result;
 			}
 		 }
+		}
 		catch(e:Dymanic) 
 		{
 			trace(e);
