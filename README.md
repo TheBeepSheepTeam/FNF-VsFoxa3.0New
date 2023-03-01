@@ -1,4 +1,4 @@
-# Friday Night Funkin' - Kooker Engine
+# Friday Night Funkin' - Foxa Engine
 Engine based off on Psych Engine which was originally used on [Mind Games Mod](https://gamebanana.com/mods/301107), intended to be a fix for the vanilla version's many issues while keeping the casual play aspect of it. Also aiming to be an easier alternative to newbie coders.
 
 ## Installation:
@@ -6,7 +6,7 @@ You must have [the most up-to-date version of Haxe, most notably 4.2.5](https://
 
 open up a Command Prompt/PowerShell or Terminal, type `haxelib install hmm`
 
-after it finishes, simply type `haxelib run hmm install` in order to install all the needed libraries for *Kooker Engine!*
+after it finishes, simply type `haxelib run hmm install` in order to install all the needed libraries for *Foxa Engine!*
 
 ## Customization:
 
@@ -18,10 +18,12 @@ to start you off, disabling Videos should be simple, simply Delete the line `"VI
 
 same goes for *Lua Scripts*, comment out or delete the line with `LUA_ALLOWED`, this and other customization options are all available within the `Project.xml` file
 
-## Kooker - Main Credits
-* KookerFoxYT/CharlesCatYT - Programmer
+## Vs. Foxa - Main Credits
+* Foxa - Main Director, Composer, Spriter, Charter, LUA Coder
+* KookerFoxYT/CharlesCatYT - Main Coder, 2nd Director, Composer, Spriter
+* Grits - Coder
 
-### Kooker - Special Thanks
+### Vs. Foxa - Special Thanks
 * BeastyGabi - Main Menu Customization
 
 ## Psych - Main Credits:
