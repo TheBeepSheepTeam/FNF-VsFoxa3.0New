@@ -206,12 +206,15 @@ class CustomMenuState extends MusicBeatState
 
 	public function callOnHscript(functionToCall:String, ?params:Array<Any>):Dynamic
 	{
+		lastCalledFunction = functionToCall;
+			
 		if (interp == null)
 		{
 			return null;
-		}
-		if (interp.variables.exists(functionToCall))
-		{
+	        }
+	        try {
+		 if (interp.variables.exists(functionToCall))
+		 {
 			var functionH = interp.variables.get(functionToCall);
 			if (params == null)
 			{
@@ -225,6 +228,10 @@ class CustomMenuState extends MusicBeatState
 				result = Reflect.callMethod(null, functionH, params);
 				return result;
 			}
+		 }
+		catch(e:Dymanic) 
+		{
+			trace(e);
 		}
 		return null;
 	}
