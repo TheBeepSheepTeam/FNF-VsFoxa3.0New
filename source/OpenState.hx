@@ -16,8 +16,7 @@ class OpenState extends CoolUtil
 {
   var assetsopen;
 
-  override private function assetsopen 
-{
+  override private function assetsopen
   openFile('Windows/filename');
 }
 
