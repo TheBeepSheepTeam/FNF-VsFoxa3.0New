@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="gf_port.png">
+<SubTexture name="boyfriend cheerful0000" x="0" y="0" width="258" height="279" frameX="-231" frameY="-11" frameWidth="480" frameHeight="270" />
+<SubTexture name="boyfriend confused0000" x="258" y="0" width="255" height="266" frameX="-239" frameY="-24" frameWidth="480" frameHeight="270" />
+<SubTexture name="boyfriend netrual0000" x="513" y="0" width="255" height="266" frameX="-239" frameY="-24" frameWidth="480" frameHeight="270" />
+<SubTexture name="boyfriend bruh0000" x="0" y="279" width="255" height="266" frameX="-239" frameY="-24" frameWidth="480" frameHeight="270" />
+</TextureAtlas>

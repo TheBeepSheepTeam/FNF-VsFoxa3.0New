@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="foxa_op_port.png">
+<SubTexture name="foxa op angy0000" x="562" y="0" width="274" height="310" frameX="-42" frameY="-24" frameWidth="365" frameHeight="314" />
+<SubTexture name="foxa op creation0000" x="0" y="0" width="288" height="312" frameX="-50" frameY="-22" frameWidth="365" frameHeight="314" />
+<SubTexture name="foxa op netrual0000" x="288" y="0" width="274" height="312" frameX="-51" frameY="-22" frameWidth="365" frameHeight="314" />
+</TextureAtlas>

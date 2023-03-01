@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="whitty_port.png">
+<SubTexture name="whitty xmas netrual0000" x="0" y="0" width="361" height="283" frameX="-14" frameY="0" frameWidth="358" frameHeight="263" />
+<SubTexture name="whitty xmas puzzled0000" x="361" y="0" width="350" height="283" frameX="-23" frameY="0" frameWidth="358" frameHeight="263" />
+<SubTexture name="whitty xmas happy0000" x="0" y="283" width="350" height="283" frameX="-23" frameY="0" frameWidth="358" frameHeight="263" />
+<SubTexture name="whitty xmas smirk0000" x="350" y="283" width="350" height="283" frameX="-23" frameY="0" frameWidth="358" frameHeight="263" />
+<SubTexture name="whitty flushed0000" x="711" y="0" width="372" height="283" frameX="-1" frameY="0" frameWidth="358" frameHeight="263" />
+<SubTexture name="whitty flushed 20000" x="711" y="283" width="372" height="283" frameX="-1" frameY="0" frameWidth="358" frameHeight="263" />
+<SubTexture name="whitty happy0000" x="0" y="566" width="318" height="283" frameX="-5" frameY="0" frameWidth="358" frameHeight="263" />
+<SubTexture name="whitty puzzled0000" x="318" y="566" width="372" height="283" frameX="-1" frameY="0" frameWidth="358" frameHeight="263" />
+<SubTexture name="whitty shocked0000" x="690" y="566" width="372" height="283" frameX="-1" frameY="0" frameWidth="358" frameHeight="263" />
+<SubTexture name="whitty smirk0000" x="1083" y="0" width="372" height="283" frameX="-1" frameY="0" frameWidth="358" frameHeight="263" />
+</TextureAtlas>

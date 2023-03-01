@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="foxa_phantasm_port.png">
+<SubTexture name="foxa_p furious0000" x="0" y="0" width="300" height="281" frameX="-10" frameY="-2" frameWidth="358" frameHeight="263" />
+<SubTexture name="foxa_p furious creation0000" x="300" y="0" width="304" height="281" frameX="-8" frameY="-2" frameWidth="358" frameHeight="263" />
+</TextureAtlas>

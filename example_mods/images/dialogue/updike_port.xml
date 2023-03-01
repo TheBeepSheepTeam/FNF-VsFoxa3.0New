@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="updike_port.png">
+<SubTexture name="updike gun0000" x="0" y="0" width="363" height="283" frameX="-5" frameY="0" frameWidth="358" frameHeight="263" />
+<SubTexture name="updike netrual0000" x="363" y="0" width="363" height="283" frameX="-5" frameY="0" frameWidth="358" frameHeight="263" />
+<SubTexture name="updike serious0000" x="0" y="283" width="363" height="283" frameX="-5" frameY="0" frameWidth="358" frameHeight="263" />
+<SubTexture name="updike talk0000" x="363" y="283" width="363" height="283" frameX="-5" frameY="0" frameWidth="358" frameHeight="263" />
+</TextureAtlas>
