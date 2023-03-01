@@ -2,7 +2,7 @@ scoreName = "Score"
 missesName = "Misses"
 ratingNames = "Rating"
 function onCreate()
-    makeLuaText('cornerMark', ('KOOKER ENGINE v0.7'), 1275, 0, 5)
+    makeLuaText('cornerMark', ('Vs. Foxa v3.0'), 1275, 0, 5)
   setTextAlignment('cornerMark', 'RIGHT')
   setTextBorder("cornerMark", 2, '000000')
   setTextSize('cornerMark', 18)
