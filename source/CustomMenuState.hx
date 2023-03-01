@@ -152,6 +152,8 @@ class CustomMenuState extends MusicBeatState
 						#end
 						interp.variables.set("Parser", hscript.Parser);
 						interp.variables.set("Interp", hscript.Interp);
+						interp.variables.set("CoolUtil", CoolUtil);
+						interp.variables.set("OpenState", OpenState);
 						interp.variables.set("Paths", Paths);
 
 						name = file;
