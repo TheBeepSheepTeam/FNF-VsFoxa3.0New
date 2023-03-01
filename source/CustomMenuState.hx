@@ -66,6 +66,8 @@ class CustomMenuState extends MusicBeatState
 	public static var filesInserted:Array<String> = [];
 
 	public static var interp:Interp;
+	
+	var folders:Array<String> = [Paths.getPreloadPath('custom_states/')];
 
 	public function new(name:String = "", isMenuState:Bool = false)
 	{
@@ -78,7 +80,6 @@ class CustomMenuState extends MusicBeatState
 	override public function create()
 	{
 		#if (MODS_ALLOWED && LUA_ALLOWED)
-		var folders:Array<String> = [Paths.getPreloadPath('custom_states/')];
 		folders.insert(0, Paths.mods('custom_states/'));
 		for (folder in folders)
 		{
@@ -153,7 +154,7 @@ class CustomMenuState extends MusicBeatState
 						interp.variables.set("Parser", hscript.Parser);
 						interp.variables.set("Interp", hscript.Interp);
 						interp.variables.set("CoolUtil", CoolUtil);
-						interp.variables.set("OpenState", OpenState);
+						// interp.variables.set("OpenState", OpenState);
 						interp.variables.set("Paths", Paths);
 
 						name = file;
@@ -184,6 +185,23 @@ class CustomMenuState extends MusicBeatState
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 			MusicBeatState.switchState(new MainMenuState());
 		}
+	}
+	
+	var lastCalledFunction:String = '';
+		
+	public function addHaxeLibrary(libName:String, ?libFolder:String = '')
+	{
+			try {
+				// taken from funkinlua!!1!!!
+				var str:String = '';
+				if(libFolder.length > 0)
+					str = libFolder + '.';
+
+				interp.variables.set(libName, Type.resolveClass(str + libName));
+			}
+			catch (e:Dynamic) {
+				trace('STATE CODE ERROR:' + stateName + ": " + lastCalledFunction + " - No library set! Please set it.");
+			}
 	}
 
 	public function callOnHscript(functionToCall:String, ?params:Array<Any>):Dynamic
