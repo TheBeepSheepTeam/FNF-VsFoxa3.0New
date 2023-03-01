@@ -287,6 +287,11 @@ class Paths
 		#end
 		return 'assets/fonts/$key';
 	}
+	
+	inline static public function state(key:String)
+	{
+		return mods('custom_states/$key');
+	}
 
 	inline static public function fileExists(key:String, type:AssetType, ?ignoreMods:Bool = false, ?library:String)
 	{
