@@ -15,6 +15,8 @@ import flixel.FlxState;
 import flixel.FlxCamera;
 import flixel.FlxBasic;
 
+// i dont need to put custom state thing here lolol
+
 class MusicBeatState extends FlxUIState
 {
 	private var curSection:Int = 0;
