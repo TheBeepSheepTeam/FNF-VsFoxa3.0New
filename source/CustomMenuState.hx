@@ -9,7 +9,7 @@ import WiggleEffect.WiggleEffectType;
 import flixel.FlxBasic;
 import flixel.FlxCamera;
 import flixel.FlxG;
-import Controls.ControlScheme;
+import Controls;
 import flixel.FlxGame;
 import flixel.FlxObject;
 import flixel.FlxSprite;
@@ -162,6 +162,7 @@ class CustomMenuState extends MusicBeatState
 						trace(interp.execute(ast));
 
 						filesInserted.push(file);
+						trace('Custom state $name has been loaded.');
 					}
 				}
 			}
