@@ -12,6 +12,8 @@ import FileOpen;
 
 using StringTools;
 
+// this code is bad, will rework later!!!!
+
 class OpenState extends CoolUtil
 {
   var assetsopen;
