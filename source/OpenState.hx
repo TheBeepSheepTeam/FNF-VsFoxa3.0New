@@ -16,16 +16,17 @@ class OpenState extends CoolUtil
 {
   var assetsopen;
 
-  override private function assetsopen {
-  openFile('Windows/filename')
+  override private function assetsopen 
+{
+  openFile('Windows/filename');
 }
 
   override private function filename {
 	Loactions 
 
-	('This PC/Desktop')
+	('This PC/Desktop');
 	#else
-	('This PC/Downloads')
+	('This PC/Downloads');
 	#else
-    ('This PC/Documents')
+    ('This PC/Documents');
 }
