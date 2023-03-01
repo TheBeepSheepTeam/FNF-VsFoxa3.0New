@@ -128,7 +128,7 @@ class CustomMenuState extends MusicBeatState
 						interp.variables.set("FlxAtlasFrames", flixel.graphics.frames.FlxAtlasFrames);
 						interp.variables.set("FlxTypedGroup", flixel.group.FlxGroup.FlxTypedGroup);
 						interp.variables.set("FlxMath", flixel.math.FlxMath);
-						interp.variables.set("FlxPoint", flixel.math.FlxPoint);
+						// interp.variables.set("FlxPoint", flixel.math.FlxPoint);
 						interp.variables.set("FlxRect", flixel.math.FlxRect);
 						interp.variables.set("FlxSound", flixel.system.FlxSound);
 						interp.variables.set("FlxText", flixel.text.FlxText);
