@@ -102,7 +102,7 @@ class MainMenuState extends MusicBeatState
 			optionShit = [
 				'story_mode',
 				'freeplay',
-				#if (MODS_ALLOWED && FUTURE_POLYMOD)
+				#if MODS_ALLOWED
 				'mods',
 				#end
 				#if ACHIEVEMENTS_ALLOWED
@@ -354,8 +354,9 @@ class MainMenuState extends MusicBeatState
 										MusicBeatState.switchState(new CreditsState());
 									case 'options':
 										LoadingState.loadAndSwitchState(new options.OptionsState());
+                                                                        // THESE ARE FOR THE CUSTOM MENU STATES, DELETE IF YOU'RE MAKING YOUR OWN SOURCE CODE MOD
 									default:
-										trace('bitch, add a state through state as of now!');
+										MusicBeatState.switchState(new CustomMenuState(optionShit[curSelected], true));
 								}
 							});
 						}
