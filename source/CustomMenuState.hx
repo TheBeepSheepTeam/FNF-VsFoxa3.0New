@@ -230,7 +230,7 @@ class CustomMenuState extends MusicBeatState
 			}
 		 }
 		}
-		catch(e:Dymanic) 
+		catch(e:Dynamic) 
 		{
 			trace(e);
 		}
