@@ -37,9 +37,6 @@ typedef MenuData =
 	angle:Float,
 	bgX:Float,
 	bgY:Float,
-	backgroundStatic:String,
-	backgroundConfirm:String,
-	colorOnConfirm:Array<FlxColor>,
 	options:Array<String>,
 	links:Array<Array<String>>
 }
@@ -53,17 +50,18 @@ class MainMenuState extends MusicBeatState
 	var menuItems:FlxTypedGroup<FlxSprite>;
 	private var camGame:FlxCamera;
 	private var camAchievement:FlxCamera;
+
 	public static var firstStart:Bool = true;
 	public static var finishedFunnyMove:Bool = false;
 
 	var optionShit:Array<String> = [];
 	var linkArray:Array<Array<String>> = [];
 
-	var magenta:FlxSprite;
+	// var magenta:FlxSprite;
 	var camFollow:FlxObject;
 	var camFollowPos:FlxObject;
 	var debugKeys:Array<FlxKey>;
-	
+
 	var invalidPosition:Null<Int> = null;
 
 	var menuJSON:MenuData;
@@ -104,13 +102,15 @@ class MainMenuState extends MusicBeatState
 			optionShit = [
 				'story_mode',
 				'freeplay',
-				#if (MODS_ALLOWED && FUTURE_POLYMOD) 'mods',
+				#if (MODS_ALLOWED && FUTURE_POLYMOD)
+				'mods',
 				#end
 				#if ACHIEVEMENTS_ALLOWED
 				'awards',
 				#end
 				'credits',
-				#if !switch 'donate',
+				#if !switch
+				'donate',
 				#end
 				'options'
 			];
@@ -124,11 +124,6 @@ class MainMenuState extends MusicBeatState
 		var yScroll:Float = Math.max(0.25 - (0.05 * (optionShit.length - 4)), 0.1);
 		var bg:FlxSprite = new FlxSprite();
 		bg.loadGraphic(Paths.image('menuBG'));
-
-		if (menuJSON.backgroundStatic != null && menuJSON.backgroundStatic.length > 0 && menuJSON.backgroundStatic != "none")
-			bg.loadGraphic(Paths.image(menuJSON.backgroundStatic));
-		else
-			bg.loadGraphic(Paths.image('menuBG'));
 
 		if (menuJSON.bgX != invalidPosition)
 			bg.x = menuJSON.bgX;
@@ -149,10 +144,7 @@ class MainMenuState extends MusicBeatState
 		add(camFollow);
 		add(camFollowPos);
 
-		if (menuJSON.backgroundConfirm != null && menuJSON.backgroundConfirm.length > 0 && menuJSON.backgroundConfirm != "none")
-			magenta.loadGraphic(Paths.image(menuJSON.backgroundConfirm));
-		else
-			magenta.loadGraphic(Paths.image('menuDesat'));
+		/* magenta.loadGraphic(Paths.image('menuDesat'));
 
 		if (menuJSON.bgX != invalidPosition)
 			magenta.x = menuJSON.bgX;
@@ -173,6 +165,8 @@ class MainMenuState extends MusicBeatState
 			magenta.color = 0xFFfd719b;
 
 		add(magenta);
+
+		*/
 
 		// magenta.scrollFactor.set();
 
@@ -215,12 +209,14 @@ class MainMenuState extends MusicBeatState
 			menuItems.add(menuItem);
 			menuItem.scrollFactor.set(0, 1);
 			menuItem.antialiasing = ClientPrefs.globalAntialiasing;
-			//menuItem.setGraphicSize(Std.int(menuItem.width * 0.58));
+			// menuItem.setGraphicSize(Std.int(menuItem.width * 0.58));
 			menuItem.updateHitbox();
 			if (firstStart)
-				FlxTween.tween(menuItem,{y: 60 + (i * 160)},1 + (i * 0.25) ,{ease: FlxEase.expoInOut, onComplete: function(flxTween:FlxTween) 
+				FlxTween.tween(menuItem, {y: 60 + (i * 160)}, 1 + (i * 0.25), {
+					ease: FlxEase.expoInOut,
+					onComplete: function(flxTween:FlxTween)
 					{
-						finishedFunnyMove = true; 
+						finishedFunnyMove = true;
 						changeItem();
 					}
 				});
@@ -308,10 +304,12 @@ class MainMenuState extends MusicBeatState
 
 			if (controls.ACCEPT)
 			{
-				if (optionShit[curSelected] == '${menuJSON.links[0]}') {
+				if (optionShit[curSelected] == '${menuJSON.links[0]}')
+				{
 					CoolUtil.browserLoad('${menuJSON.links[1]}');
 				}
-				else if (optionShit[curSelected] == 'donate') {
+				else if (optionShit[curSelected] == 'donate')
+				{
 					CoolUtil.browserLoad(Assets.getText(Paths.txt('donate_button_link')));
 				}
 				else
@@ -319,8 +317,8 @@ class MainMenuState extends MusicBeatState
 					selectedSomethin = true;
 					FlxG.sound.play(Paths.sound('confirmMenu'));
 
-					if (ClientPrefs.flashing)
-						FlxFlicker.flicker(magenta, 1.1, 0.15, false);
+					/* if (ClientPrefs.flashing)
+						FlxFlicker.flicker(magenta, 1.1, 0.15, false); */
 
 					menuItems.forEach(function(spr:FlxSprite)
 					{
@@ -356,7 +354,7 @@ class MainMenuState extends MusicBeatState
 										MusicBeatState.switchState(new CreditsState());
 									case 'options':
 										LoadingState.loadAndSwitchState(new options.OptionsState());
-									default: 
+									default:
 										trace('bitch, add a state through state as of now!');
 								}
 							});
