@@ -71,6 +71,12 @@ import sys.io.File;
 #if VIDEOS_ALLOWED
 import hxcodec.VideoHandler;
 #end
+#if LUA_ALLOWED
+import psychlua.DebugLuaText;
+import psychlua.ModchartSprite;
+import psychlua.ModchartText;
+import psychlua.LuaUtils;
+#end
 
 using StringTools;
 
@@ -340,7 +346,7 @@ class PlayState extends MusicBeatState
 	public static var lastCombo:FlxSprite;
 	// stores the last combo score objects in an array
 	public static var lastScore:Array<FlxSprite> = [];
-	
+
 	public var songName:String;
 
 	override public function create()
@@ -368,23 +374,23 @@ class PlayState extends MusicBeatState
 		// Ratings
 		/* ratingsData.push(new Rating('sick')); // default rating
 
-		var rating:Rating = new Rating('good');
-		rating.ratingMod = 0.7;
-		rating.score = 200;
-		rating.noteSplash = false;
-		ratingsData.push(rating);
+			var rating:Rating = new Rating('good');
+			rating.ratingMod = 0.7;
+			rating.score = 200;
+			rating.noteSplash = false;
+			ratingsData.push(rating);
 
-		var rating:Rating = new Rating('bad');
-		rating.ratingMod = 0.4;
-		rating.score = 100;
-		rating.noteSplash = false;
-		ratingsData.push(rating);
+			var rating:Rating = new Rating('bad');
+			rating.ratingMod = 0.4;
+			rating.score = 100;
+			rating.noteSplash = false;
+			ratingsData.push(rating);
 
-		var rating:Rating = new Rating('shit');
-		rating.ratingMod = 0;
-		rating.score = 50;
-		rating.noteSplash = false;
-		ratingsData.push(rating); */
+			var rating:Rating = new Rating('shit');
+			rating.ratingMod = 0;
+			rating.score = 50;
+			rating.noteSplash = false;
+			ratingsData.push(rating); */
 
 		// For the "Just the Two of Us" achievement
 		for (i in 0...keysArray.length)
@@ -444,10 +450,10 @@ class PlayState extends MusicBeatState
 		#end
 
 		GameOverSubstate.resetVariables();
-                songName = Paths.formatToSongPath(SONG.song);
+		songName = Paths.formatToSongPath(SONG.song);
 		if (SONG.stage == null || SONG.stage.length < 1)
 		{
-                        SONG.stage = StageData.vanillaSongStage(songName);
+			SONG.stage = StageData.vanillaSongStage(songName);
 		}
 		curStage = SONG.stage;
 
@@ -845,13 +851,11 @@ class PlayState extends MusicBeatState
 					foregroundSprites.add(new BGSprite('tank3', 1300, 1200, 3.5, 2.5, ['fg']));
 		}
 
-		
-			/* switch(songName)
+		/* switch(songName)
 			{
 				case 'stress':
 					GameOverSubstate.characterName = 'bf-holding-gf-dead';
-			} */
-		 
+		}*/
 
 		if (isPixelStage)
 		{
@@ -1391,83 +1395,82 @@ class PlayState extends MusicBeatState
 	}
 
 	/* #if (!flash && sys)
-	public var runtimeShaders:Map<String, Array<String>> = new Map<String, Array<String>>();
+		public var runtimeShaders:Map<String, Array<String>> = new Map<String, Array<String>>();
 
-	public function createRuntimeShader(name:String):FlxRuntimeShader
-	{
-		if (!ClientPrefs.shaders)
-			return new FlxRuntimeShader();
-
-		#if (!flash && MODS_ALLOWED && sys)
-		if (!runtimeShaders.exists(name) && !initLuaShader(name))
+		public function createRuntimeShader(name:String):FlxRuntimeShader
 		{
-			FlxG.log.warn('Shader $name is missing!');
-			return new FlxRuntimeShader();
-		}
+			if (!ClientPrefs.shaders)
+				return new FlxRuntimeShader();
 
-		var arr:Array<String> = runtimeShaders.get(name);
-		return new FlxRuntimeShader(arr[0], arr[1]);
-		#else
-		FlxG.log.warn("Platform unsupported for Runtime Shaders!");
-		return null;
-		#end
-	}
-
-	public function initLuaShader(name:String, ?glslVersion:Int = 120)
-	{
-		if (!ClientPrefs.shaders)
-			return false;
-
-		if (runtimeShaders.exists(name))
-		{
-			FlxG.log.warn('Shader $name was already initialized!');
-			return true;
-		}
-
-		var foldersToCheck:Array<String> = [Paths.mods('shaders/')];
-		if (Paths.currentModDirectory != null && Paths.currentModDirectory.length > 0)
-			foldersToCheck.insert(0, Paths.mods(Paths.currentModDirectory + '/shaders/'));
-
-		for (mod in Paths.getGlobalMods())
-			foldersToCheck.insert(0, Paths.mods(mod + '/shaders/'));
-
-		for (folder in foldersToCheck)
-		{
-			if (FileSystem.exists(folder))
+			#if (!flash && MODS_ALLOWED && sys)
+			if (!runtimeShaders.exists(name) && !initLuaShader(name))
 			{
-				var frag:String = folder + name + '.frag';
-				var vert:String = folder + name + '.vert';
-				var found:Bool = false;
-				if (FileSystem.exists(frag))
-				{
-					frag = File.getContent(frag);
-					found = true;
-				}
-				else
-					frag = null;
+				FlxG.log.warn('Shader $name is missing!');
+				return new FlxRuntimeShader();
+			}
 
-				if (FileSystem.exists(vert))
-				{
-					vert = File.getContent(vert);
-					found = true;
-				}
-				else
-					vert = null;
+			var arr:Array<String> = runtimeShaders.get(name);
+			return new FlxRuntimeShader(arr[0], arr[1]);
+			#else
+			FlxG.log.warn("Platform unsupported for Runtime Shaders!");
+			return null;
+			#end
+		}
 
-				if (found)
+		public function initLuaShader(name:String, ?glslVersion:Int = 120)
+		{
+			if (!ClientPrefs.shaders)
+				return false;
+
+			if (runtimeShaders.exists(name))
+			{
+				FlxG.log.warn('Shader $name was already initialized!');
+				return true;
+			}
+
+			var foldersToCheck:Array<String> = [Paths.mods('shaders/')];
+			if (Paths.currentModDirectory != null && Paths.currentModDirectory.length > 0)
+				foldersToCheck.insert(0, Paths.mods(Paths.currentModDirectory + '/shaders/'));
+
+			for (mod in Paths.getGlobalMods())
+				foldersToCheck.insert(0, Paths.mods(mod + '/shaders/'));
+
+			for (folder in foldersToCheck)
+			{
+				if (FileSystem.exists(folder))
 				{
-					runtimeShaders.set(name, [frag, vert]);
-					// trace('Found shader $name!');
-					return true;
+					var frag:String = folder + name + '.frag';
+					var vert:String = folder + name + '.vert';
+					var found:Bool = false;
+					if (FileSystem.exists(frag))
+					{
+						frag = File.getContent(frag);
+						found = true;
+					}
+					else
+						frag = null;
+
+					if (FileSystem.exists(vert))
+					{
+						vert = File.getContent(vert);
+						found = true;
+					}
+					else
+						vert = null;
+
+					if (found)
+					{
+						runtimeShaders.set(name, [frag, vert]);
+						// trace('Found shader $name!');
+						return true;
+					}
 				}
 			}
+			FlxG.log.warn('Missing shader $name .frag AND .vert files!');
+			return false;
 		}
-		FlxG.log.warn('Missing shader $name .frag AND .vert files!');
-		return false;
-	}
-	#end
-        */
-
+		#end
+	 */
 	function set_songSpeed(value:Float):Float
 	{
 		if (generatedMusic)
@@ -1738,7 +1741,6 @@ class PlayState extends MusicBeatState
 		senpaiEvil.screenCenter();
 		senpaiEvil.x += 300;
 
-		var songName:String = Paths.formatToSongPath(SONG.song);
 		if (songName == 'roses' || songName == 'thorns')
 		{
 			remove(black);
@@ -1810,7 +1812,6 @@ class PlayState extends MusicBeatState
 	{
 		var cutsceneHandler:CutsceneHandler = new CutsceneHandler();
 
-		var songName:String = Paths.formatToSongPath(SONG.song);
 		dadGroup.alpha = 0.00001;
 		camHUD.visible = false;
 		// inCutscene = true; //this would stop the camera movement, oops
@@ -2547,7 +2548,6 @@ class PlayState extends MusicBeatState
 
 		var daBeats:Int = 0; // Not exactly representative of 'daBeats' lol, just how much it has looped
 
-		var songName:String = Paths.formatToSongPath(SONG.song);
 		var file:String = Paths.json(songName + '/events');
 		#if MODS_ALLOWED
 		if (FileSystem.exists(Paths.modsJson(songName + '/events')) || FileSystem.exists(file))
@@ -4105,12 +4105,12 @@ class PlayState extends MusicBeatState
 				killMe = killMe[0].split('.');
 				if (killMe.length > 1)
 				{
-					FunkinLua.setVarInArray(FunkinLua.getPropertyLoopThingWhatever(killMe, true, true), killMe[killMe.length - 1],
+					LuaUtils.setVarInArray(FunkinLua.getPropertyLoopThingWhatever(killMe, true, true), killMe[killMe.length - 1],
 						trueVal != null ? trueVal : value2);
 				}
 				else
 				{
-					FunkinLua.setVarInArray(this, value1, trueVal != null ? trueVal : value2);
+					LuaUtils.setVarInArray(this, value1, trueVal != null ? trueVal : value2);
 				}
 		}
 		callOnLuas('onEvent', [eventName, value1, value2]);

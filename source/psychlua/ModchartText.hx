@@ -6,6 +6,7 @@ import flixel.util.FlxColor;
 class ModchartText extends FlxText
 {
 	public var wasAdded:Bool = false;
+
 	public function new(x:Float, y:Float, text:String, width:Float)
 	{
 		super(x, y, width, text, 16);

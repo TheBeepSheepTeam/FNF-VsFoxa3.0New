@@ -5,7 +5,6 @@ import hscript.Parser;
 import hscript.Interp;
 import hscript.Expr;
 #end
-
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxCamera;
@@ -18,6 +17,7 @@ class HScript
 {
 	#if hscript
 	public static var parser:Parser = new Parser();
+
 	public var interp:Interp;
 
 	public var variables(get, never):Map<String, Dynamic>;
@@ -26,14 +26,14 @@ class HScript
 	{
 		return interp.variables;
 	}
-	
+
 	public static function initHaxeModule()
 	{
 		#if hscript
-		if(FunkinLua.hscript == null)
+		if (FunkinLua.hscript == null)
 		{
-			//trace('initializing haxe interp for: $scriptName');
-			FunkinLua.hscript = new HScript(); //TO DO: Fix issue with 2 scripts not being able to use the same variable names
+			// trace('initializing haxe interp for: $scriptName');
+			FunkinLua.hscript = new HScript(); // TO DO: Fix issue with 2 scripts not being able to use the same variable names
 		}
 		#end
 	}
@@ -68,12 +68,13 @@ class HScript
 		interp.variables.set('getVar', function(name:String)
 		{
 			var result:Dynamic = null;
-			if(PlayState.instance.variables.exists(name)) result = PlayState.instance.variables.get(name);
+			if (PlayState.instance.variables.exists(name))
+				result = PlayState.instance.variables.get(name);
 			return result;
 		});
 		interp.variables.set('removeVar', function(name:String)
 		{
-			if(PlayState.instance.variables.exists(name))
+			if (PlayState.instance.variables.exists(name))
 			{
 				PlayState.instance.variables.remove(name);
 				return true;
