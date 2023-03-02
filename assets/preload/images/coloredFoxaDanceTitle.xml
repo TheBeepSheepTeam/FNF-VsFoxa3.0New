@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TextureAtlas imagePath="foxaDanceTitle.png">
+<TextureAtlas imagePath="coloredFoxaDanceTitle.png">
 	<!-- Created with Adobe Animate version 21.0.1.37179 -->
 	<!-- http://www.adobe.com/products/animate.html -->
 	<SubTexture name="dance0000" x="0" y="0" width="465" height="639" frameX="-21" frameY="-14" frameWidth="490" frameHeight="653"/>
