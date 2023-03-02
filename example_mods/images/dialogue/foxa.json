@@ -1,0 +1,51 @@
+{
+	"position": [
+		120,
+		90
+	],
+	"dialogue_pos": "left",
+	"no_antialiasing": false,
+	"scale": 1.6,
+	"image": "foxa_op_port",
+	"animations": [
+		{
+			"loop_offsets": [
+				0,
+				0
+			],
+			"anim": "neutral",
+			"idle_offsets": [
+				0,
+				0
+			],
+			"loop_name": "foxa op netrual",
+			"idle_name": "foxa op netrual"
+		},
+		{
+			"loop_name": "foxa op angy",
+			"idle_offsets": [
+				-13,
+				0
+			],
+			"idle_name": "foxa op angy",
+			"anim": "angy",
+			"loop_offsets": [
+				-11,
+				0
+			]
+		},
+		{
+			"loop_name": "foxa op creation",
+			"idle_offsets": [
+				0,
+				0
+			],
+			"idle_name": "foxa op creation",
+			"anim": "mad",
+			"loop_offsets": [
+				0,
+				0
+			]
+		}
+	]
+}

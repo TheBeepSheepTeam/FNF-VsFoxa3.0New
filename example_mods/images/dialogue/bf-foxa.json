@@ -1,0 +1,63 @@
+{
+	"position": [
+		90,
+		150
+	],
+	"dialogue_pos": "right",
+	"scale": 2,
+	"image": "bf_port",
+	"animations": [
+		{
+			"loop_offsets": [
+				0,
+				0
+			],
+			"anim": "neutral",
+			"idle_offsets": [
+				0,
+				0
+			],
+			"loop_name": "boyfriend netrual",
+			"idle_name": "boyfriend netrual"
+		},
+		{
+			"loop_name": "boyfriend confused",
+			"idle_offsets": [
+				0,
+				0
+			],
+			"idle_name": "boyfriend confused",
+			"anim": "confused",
+			"loop_offsets": [
+				0,
+				0
+			]
+		},
+		{
+			"loop_name": "boyfriend ready",
+			"idle_offsets": [
+				0,
+				0
+			],
+			"idle_name": "boyfriend ready",
+			"anim": "ready",
+			"loop_offsets": [
+				0,
+				0
+			]
+		},
+		{
+			"loop_name": "boyfriend upset",
+			"idle_offsets": [
+				0,
+				0
+			],
+			"idle_name": "boyfriend upset",
+			"anim": "upset",
+			"loop_offsets": [
+				0,
+				0
+			]
+		}
+	]
+}

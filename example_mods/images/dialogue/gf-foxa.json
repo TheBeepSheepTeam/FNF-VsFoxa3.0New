@@ -1,0 +1,63 @@
+{
+	"position": [
+		-20,
+		120
+	],
+	"dialogue_pos": "center",
+	"scale": 2,
+	"image": "gf_port",
+	"animations": [
+		{
+			"loop_offsets": [
+				0,
+				0
+			],
+			"anim": "neutral",
+			"idle_offsets": [
+				0,
+				0
+			],
+			"loop_name": "boyfriend netrual",
+			"idle_name": "boyfriend netrual"
+		},
+		{
+			"loop_name": "boyfriend confused",
+			"idle_offsets": [
+				2,
+				0
+			],
+			"idle_name": "boyfriend confused",
+			"anim": "confused",
+			"loop_offsets": [
+				0,
+				0
+			]
+		},
+		{
+			"loop_name": "boyfriend cheerful",
+			"idle_offsets": [
+				0,
+				0
+			],
+			"idle_name": "boyfriend cheerful",
+			"anim": "cheer",
+			"loop_offsets": [
+				0,
+				0
+			]
+		},
+		{
+			"loop_name": "boyfriend bruh",
+			"idle_offsets": [
+				0,
+				0
+			],
+			"idle_name": "boyfriend bruh",
+			"anim": "bruh",
+			"loop_offsets": [
+				0,
+				0
+			]
+		}
+	]
+}

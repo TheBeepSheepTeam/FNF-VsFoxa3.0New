@@ -1,0 +1,167 @@
+{
+	"position": [
+		100,
+		110
+	],
+	"dialogue_pos": "right",
+	"scale": 1.7,
+	"image": "foxa_bfb_port",
+	"animations": [
+		{
+			"loop_offsets": [
+				0,
+				0
+			],
+			"anim": "neutral",
+			"idle_offsets": [
+				0,
+				0
+			],
+			"loop_name": "foxa happy",
+			"idle_name": "foxa happy"
+		},
+		{
+			"loop_name": "foxa hapmouth closed",
+			"idle_offsets": [
+				0,
+				0
+			],
+			"idle_name": "foxa hapmouth closed",
+			"anim": "neutral-closed",
+			"loop_offsets": [
+				0,
+				0
+			]
+		},
+		{
+			"loop_name": "foxa unaware",
+			"idle_offsets": [
+				0,
+				0
+			],
+			"idle_name": "foxa unaware",
+			"anim": "unaware",
+			"loop_offsets": [
+				0,
+				0
+			]
+		},
+		{
+			"loop_name": "foxa scared",
+			"idle_offsets": [
+				0,
+				0
+			],
+			"idle_name": "foxa scared",
+			"anim": "scared",
+			"loop_offsets": [
+				0,
+				0
+			]
+		},
+		{
+			"loop_name": "foxa glee",
+			"idle_offsets": [
+				0,
+				0
+			],
+			"idle_name": "foxa glee",
+			"anim": "glee",
+			"loop_offsets": [
+				0,
+				0
+			]
+		},
+		{
+			"loop_name": "foxa xmasnetrual",
+			"idle_offsets": [
+				0,
+				0
+			],
+			"idle_name": "foxa xmasnetrual",
+			"anim": "confused-xmas",
+			"loop_offsets": [
+				0,
+				0
+			]
+		},
+		{
+			"loop_name": "foxa xmasglee",
+			"idle_offsets": [
+				0,
+				0
+			],
+			"idle_name": "foxa xmasglee",
+			"anim": "glee-xmas",
+			"loop_offsets": [
+				0,
+				0
+			]
+		},
+		{
+			"loop_name": "foxa xmasnocomment",
+			"idle_offsets": [
+				0,
+				0
+			],
+			"idle_name": "foxa xmasnocomment",
+			"anim": "commentless-xmas",
+			"loop_offsets": [
+				0,
+				0
+			]
+		},
+		{
+			"loop_name": "foxa xmasnocommenmore",
+			"idle_offsets": [
+				0,
+				0
+			],
+			"idle_name": "foxa xmasnocommenmore",
+			"anim": "commentless2-xmas",
+			"loop_offsets": [
+				0,
+				0
+			]
+		},
+		{
+			"loop_name": "foxa xmashappy",
+			"idle_offsets": [
+				0,
+				0
+			],
+			"idle_name": "foxa xmashappy",
+			"anim": "happy-xmas",
+			"loop_offsets": [
+				0,
+				0
+			]
+		},
+		{
+			"loop_name": "foxa angcry",
+			"idle_offsets": [
+				0,
+				0
+			],
+			"idle_name": "foxa angcry",
+			"anim": "angry-cry",
+			"loop_offsets": [
+				0,
+				0
+			]
+		},
+		{
+			"loop_name": "foxa angry",
+			"idle_offsets": [
+				0,
+				0
+			],
+			"idle_name": "foxa angry",
+			"anim": "angry",
+			"loop_offsets": [
+				0,
+				0
+			]
+		}
+	]
+}

@@ -1,14 +1,14 @@
 <?xml version='1.0' encoding='utf-8'?>
 <TextureAtlas imagePath="foxa_bfb_port.png">
 <SubTexture name="foxa angry0000" x="0" y="0" width="264" height="283" frameX="-53" frameY="0" frameWidth="358" frameHeight="263" />
-<SubTexture name="foxa angry cry0000" x="264" y="0" width="267" height="283" frameX="-50" frameY="0" frameWidth="358" frameHeight="263" />
-<SubTexture name="foxa xmas happy0000" x="531" y="0" width="261" height="283" frameX="-48" frameY="0" frameWidth="358" frameHeight="263" />
-<SubTexture name="foxa xmas no comment0000" x="0" y="283" width="261" height="283" frameX="-48" frameY="0" frameWidth="358" frameHeight="263" />
-<SubTexture name="foxa xmas no comment 20000" x="261" y="283" width="261" height="283" frameX="-48" frameY="0" frameWidth="358" frameHeight="263" />
-<SubTexture name="foxa xmas glee0000" x="522" y="283" width="261" height="283" frameX="-48" frameY="0" frameWidth="358" frameHeight="263" />
-<SubTexture name="foxa xmas netrual0000" x="792" y="0" width="261" height="283" frameX="-48" frameY="0" frameWidth="358" frameHeight="263" />
+<SubTexture name="foxa angcry0000" x="264" y="0" width="267" height="283" frameX="-50" frameY="0" frameWidth="358" frameHeight="263" />
+<SubTexture name="foxa xmashappy0000" x="531" y="0" width="261" height="283" frameX="-48" frameY="0" frameWidth="358" frameHeight="263" />
+<SubTexture name="foxa xmasnocomment0000" x="0" y="283" width="261" height="283" frameX="-48" frameY="0" frameWidth="358" frameHeight="263" />
+<SubTexture name="foxa xmasnocommenmore0000" x="261" y="283" width="261" height="283" frameX="-48" frameY="0" frameWidth="358" frameHeight="263" />
+<SubTexture name="foxa xmasglee0000" x="522" y="283" width="261" height="283" frameX="-48" frameY="0" frameWidth="358" frameHeight="263" />
+<SubTexture name="foxa xmasnetrual0000" x="792" y="0" width="261" height="283" frameX="-48" frameY="0" frameWidth="358" frameHeight="263" />
 <SubTexture name="foxa glee0000" x="0" y="566" width="269" height="283" frameX="-48" frameY="0" frameWidth="358" frameHeight="263" />
-<SubTexture name="foxa happy mouth closed0000" x="269" y="566" width="264" height="283" frameX="-53" frameY="0" frameWidth="358" frameHeight="263" />
+<SubTexture name="foxa hapmouth closed0000" x="269" y="566" width="264" height="283" frameX="-53" frameY="0" frameWidth="358" frameHeight="263" />
 <SubTexture name="foxa happy0000" x="533" y="566" width="264" height="283" frameX="-53" frameY="0" frameWidth="358" frameHeight="263" />
 <SubTexture name="foxa unaware0000" x="1053" y="0" width="275" height="283" frameX="-42" frameY="0" frameWidth="358" frameHeight="263" />
 <SubTexture name="foxa scared0000" x="1053" y="283" width="275" height="283" frameX="-42" frameY="0" frameWidth="358" frameHeight="263" />
