@@ -121,6 +121,7 @@ class Character extends FlxSprite
 				if (!Assets.exists(path))
 				#end
 				{
+					Main.toast.create('Character not found!', 0xFFFF0000, '$curCharacter cannot be found, bitch.');
 					path = Paths.getPreloadPath('characters/' + DEFAULT_CHARACTER +
 						'.json'); // If a character couldn't be found, change him to BF just to prevent a crash
 				}

@@ -185,7 +185,8 @@ class ModDownloadState extends MusicBeatState
 				|| coolParsed._aFiles[0]._sFile.endsWith(".bnp")
 				|| coolParsed._aFiles[0]._sFile.endsWith(".json"))
 			{
-				coolText.text = 'Error! File Extension Must Be .zip!';
+				Main.toast.create('Error', 0xFFFF0000, 'File extension must be .zip!');
+				coolText.text = 'Error! File extension must be .zip!';
 				canExit = true;
 				alreadyPressed = false;
 				return;
@@ -197,6 +198,7 @@ class ModDownloadState extends MusicBeatState
 
 			modDownload.addEventListener(IOErrorEvent.IO_ERROR, function(errorThrown)
 			{
+				Main.toast.create('Could not download!', 0xFFFF0000, 'Check your connection if this persists.');
 				coolText.text = 'Error! Could not download ${coolParsed._aFiles[0]._sFile}!';
 			});
 			modDownload.addEventListener(Event.COMPLETE, function(done)
@@ -228,6 +230,7 @@ class ModDownloadState extends MusicBeatState
 
 		websiteJSON.onError = function(error)
 		{
+			Main.toast.create('No mod found!', 0xFFFF0000, 'Check your connection if this persists.');
 			coolText.text = "No Mod Found!";
 		}
 		websiteJSON.request();

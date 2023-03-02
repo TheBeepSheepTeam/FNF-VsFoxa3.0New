@@ -275,6 +275,7 @@ class DialogueEditorState extends MusicBeatState
 						character.playAnim(character.jsonFile.animations[curAnim].anim, daText.finishedText);
 						animText.text = 'Animation: ' + character.jsonFile.animations[curAnim].anim + ' (' + (curAnim + 1) +' / ' + character.jsonFile.animations.length + ') - Press W or S to scroll';
 					} else {
+						Main.toast.create('No animations found!', 0xFFFF0000, 'Bitch. You literally forgot to add them!');
 						animText.text = 'ERROR! NO ANIMATIONS FOUND';
 					}
 					characterAnimSpeed();

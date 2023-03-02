@@ -11,6 +11,7 @@ import openfl.display.Sprite;
 import openfl.events.Event;
 import openfl.display.StageScaleMode;
 import lime.app.Application;
+import core.ToastCore;
 
 #if desktop
 import Discord.DiscordClient;
@@ -40,6 +41,8 @@ class Main extends Sprite
 		startFullscreen: false // if the game should start at fullscreen mode
 	};
 
+	public static var toast:ToastCore; // credits go to MAJigsaw77
+
 	public static var fpsVar:FPS;
 
 	// You can pretty much ignore everything from here on - your code should go in your states.
@@ -61,6 +64,9 @@ class Main extends Sprite
 		{
 			addEventListener(Event.ADDED_TO_STAGE, init);
 		}
+
+		toast = new ToastCore();
+		addChild(toast);
 	}
 
 	private function init(?E:Event):Void

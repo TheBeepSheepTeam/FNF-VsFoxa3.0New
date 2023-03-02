@@ -200,6 +200,7 @@ class CustomMenuState extends MusicBeatState
 				interp.variables.set(libName, Type.resolveClass(str + libName));
 			}
 			catch (e:Dynamic) {
+				Main.toast.create('State Code Error', 0xFFFF0000, name + ': ' + lastCalledFunction + ' - No library set! Please set it.');
 				trace('STATE CODE ERROR: ' + name + ": " + lastCalledFunction + " - No library set! Please set it.");
 			}
 	}

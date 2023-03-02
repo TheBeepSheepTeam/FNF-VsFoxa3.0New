@@ -660,6 +660,7 @@ class ChartingState extends MusicBeatState
 				}
 				catch (e:Any)
 				{
+					Main.toast.create('JSON not found!', 0xFFFF0000, 'I do not see' + _song.song.toLowerCase() + CoolUtil.getDifficultyFilePath() + 'here.');
 					trace("File " + _song.song.toLowerCase() + CoolUtil.getDifficultyFilePath() + " is not found.");
 				}
 			}

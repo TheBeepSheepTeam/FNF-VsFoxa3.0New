@@ -2572,6 +2572,7 @@ class FunkinLua
 			else
 			{
 				luaTrace('startVideo: Video file not found: ' + videoFile, false, false, FlxColor.RED);
+				Main.toast.create('Video file not found!', 0xFFFF0000, 'You forgor the video. :skull:');
 			}
 			return false;
 			#else
