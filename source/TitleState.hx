@@ -514,6 +514,7 @@ class TitleState extends MusicBeatState
 
 				new FlxTimer().start(1, function(tmr:FlxTimer)
 				{
+                    // checking back later
 					MusicBeatState.switchState(new ThanksState());
 					closedState = true;
 				});
