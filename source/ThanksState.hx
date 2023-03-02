@@ -24,7 +24,7 @@ class ThanksState extends MusicBeatState
 	override function create()
 	{
 		super.create();
-		/*var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('week54prototype', 'shared'));
+		/*  var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('week54prototype', 'shared'));
 			bg.scale.x *= 1.55;
 			bg.scale.y *= 1.55;
 			bg.screenCenter();
@@ -97,11 +97,11 @@ class ThanksState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
-	else if (controls.ACCEPT)
-	{
-		leftState = true;
-		FlxG.switchState(new MainMenuState());
-	}
+		if (controls.ACCEPT)
+		{
+			leftState = true;
+			FlxG.switchState(new MainMenuState());
+		}
 		if (controls.BACK)
 		{
 			leftState = true;
