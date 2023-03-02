@@ -5,9 +5,6 @@ import openfl.utils.Assets as OpenFlAssets;
 
 using StringTools;
 
-/**
- * Class used to create and control the `HealthIcon`s used on the Healthbar.
- */
 class HealthIcon extends FlxSprite
 {
 	public var sprTracker:FlxSprite;

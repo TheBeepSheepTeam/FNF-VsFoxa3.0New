@@ -59,7 +59,7 @@ import Achievements;
 import StageData;
 import psychlua.FunkinLua;
 import DialogueBoxPsych;
-import Conductor.Rating;
+import Rating;
 #if !flash
 import flixel.addons.display.FlxRuntimeShader;
 import openfl.filters.ShaderFilter;
