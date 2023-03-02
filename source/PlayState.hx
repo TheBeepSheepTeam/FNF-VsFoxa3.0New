@@ -57,7 +57,7 @@ import flixel.animation.FlxAnimationController;
 import animateatlas.AtlasFrameMaker;
 import Achievements;
 import StageData;
-import FunkinLua;
+import psychlua.FunkinLua;
 import DialogueBoxPsych;
 import Conductor.Rating;
 #if !flash
@@ -195,7 +195,7 @@ class PlayState extends MusicBeatState
 
 	public var timeBar:FlxBar;
 
-	public var ratingsData:Array<Rating> = [];
+	public var ratingsData:Array<Rating> = Rating.loadDefault();
 	public var sicks:Int = 0;
 	public var goods:Int = 0;
 	public var bads:Int = 0;
@@ -340,6 +340,8 @@ class PlayState extends MusicBeatState
 	public static var lastCombo:FlxSprite;
 	// stores the last combo score objects in an array
 	public static var lastScore:Array<FlxSprite> = [];
+	
+	public var songName:String;
 
 	override public function create()
 	{
@@ -364,7 +366,7 @@ class PlayState extends MusicBeatState
 		controlArray = ['NOTE_LEFT', 'NOTE_DOWN', 'NOTE_UP', 'NOTE_RIGHT'];
 
 		// Ratings
-		ratingsData.push(new Rating('sick')); // default rating
+		/* ratingsData.push(new Rating('sick')); // default rating
 
 		var rating:Rating = new Rating('good');
 		rating.ratingMod = 0.7;
@@ -382,7 +384,7 @@ class PlayState extends MusicBeatState
 		rating.ratingMod = 0;
 		rating.score = 50;
 		rating.noteSplash = false;
-		ratingsData.push(rating);
+		ratingsData.push(rating); */
 
 		// For the "Just the Two of Us" achievement
 		for (i in 0...keysArray.length)
@@ -442,35 +444,12 @@ class PlayState extends MusicBeatState
 		#end
 
 		GameOverSubstate.resetVariables();
-		var songName:String = Paths.formatToSongPath(SONG.song);
-
-		curStage = SONG.stage;
-		// trace('stage is: ' + curStage);
+                songName = Paths.formatToSongPath(SONG.song);
 		if (SONG.stage == null || SONG.stage.length < 1)
 		{
-			switch (songName)
-			{
-				case 'spookeez' | 'south' | 'monster':
-					curStage = 'spooky';
-				case 'pico' | 'blammed' | 'philly' | 'philly-nice':
-					curStage = 'philly';
-				case 'milf' | 'satin-panties' | 'high':
-					curStage = 'limo';
-				case 'cocoa' | 'eggnog':
-					curStage = 'mall';
-				case 'winter-horrorland':
-					curStage = 'mallEvil';
-				case 'senpai' | 'roses':
-					curStage = 'school';
-				case 'thorns':
-					curStage = 'schoolEvil';
-				case 'ugh' | 'guns' | 'stress':
-					curStage = 'tank';
-				default:
-					curStage = 'stage';
-			}
+                        SONG.stage = StageData.vanillaSongStage(songName);
 		}
-		SONG.stage = curStage;
+		curStage = SONG.stage;
 
 		var stageData:StageFile = StageData.getStageFile(curStage);
 		if (stageData == null)
@@ -866,13 +845,13 @@ class PlayState extends MusicBeatState
 					foregroundSprites.add(new BGSprite('tank3', 1300, 1200, 3.5, 2.5, ['fg']));
 		}
 
-		/*
-			switch(Paths.formatToSongPath(SONG.song))
+		
+			/* switch(songName)
 			{
 				case 'stress':
 					GameOverSubstate.characterName = 'bf-holding-gf-dead';
-			}
-		 */
+			} */
+		 
 
 		if (isPixelStage)
 		{
@@ -1411,7 +1390,7 @@ class PlayState extends MusicBeatState
 			checkEventNote();
 	}
 
-	#if (!flash && sys)
+	/* #if (!flash && sys)
 	public var runtimeShaders:Map<String, Array<String>> = new Map<String, Array<String>>();
 
 	public function createRuntimeShader(name:String):FlxRuntimeShader
@@ -1487,6 +1466,7 @@ class PlayState extends MusicBeatState
 		return false;
 	}
 	#end
+        */
 
 	function set_songSpeed(value:Float):Float
 	{
