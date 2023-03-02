@@ -324,9 +324,12 @@ class TitleState extends MusicBeatState
 				// EDIT THIS ONE IF YOU'RE MAKING A SOURCE CODE MOD!!!!
 				// EDIT THIS ONE IF YOU'RE MAKING A SOURCE CODE MOD!!!!
 				// EDIT THIS ONE IF YOU'RE MAKING A SOURCE CODE MOD!!!!
-				gfDance.frames = Paths.getSparrowAtlas('gfDanceTitle');
+				/*gfDance.frames = Paths.getSparrowAtlas('gfDanceTitle');
 				gfDance.animation.addByIndices('danceLeft', 'gfDance', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
-				gfDance.animation.addByIndices('danceRight', 'gfDance', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
+				gfDance.animation.addByIndices('danceRight', 'gfDance', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false); */
+				gfDance.frames = Paths.getSparrowAtlas('foxaDanceTitle');
+				gfDance.animation.addByPrefix('danceLeft', 'dance', 24, false);
+				gfDance.animation.addByPrefix('danceRight', 'dance', 24, false);
 		}
 		gfDance.scale.set(titleJSON.gfscalex, titleJSON.gfscaley);
 		gfDance.antialiasing = titleJSON.gfantialiasing;
@@ -514,7 +517,7 @@ class TitleState extends MusicBeatState
 
 				new FlxTimer().start(1, function(tmr:FlxTimer)
 				{
-                    // checking back later
+					// checking back later
 					MusicBeatState.switchState(new ThanksState());
 					closedState = true;
 				});
