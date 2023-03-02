@@ -77,6 +77,10 @@ class FunkinLua {
 
 		//LuaL.dostring(lua, CLENSE);
 		try{
+						Lua.getglobal(lua, "package");
+			Lua.pushstring(lua, Paths.getLuaPackagePath());
+			Lua.setfield(lua, -2, "path");
+			Lua.pop(lua, 1);
 			var result:Dynamic = LuaL.dofile(lua, script);
 			var resultStr:String = Lua.tostring(lua, result);
 			if(resultStr != null && result != 0) {
@@ -851,6 +855,36 @@ class FunkinLua {
 				return;
 			}
 			luaTrace("removeLuaScript: Script doesn't exist!", false, false, FlxColor.RED);
+		});
+		
+		Lua_helper.add_callback(lua, "setVariable", function(variable:String, value:Dynamic, ?theScript:String) {
+			theScript = (theScript == null ? scriptName : theScript); 
+			if (theScript == scriptName)
+				variables.set(variable, value);
+			else{
+				for (luaInstance in PlayState.instance.luaArray){
+					var nom:Array<String> = luaInstance.scriptName.split('/');
+					if (nom[nom.length-1].substr(0, -".lua".length) == theScript)
+						luaInstance.variables.set(variable, value);
+				}
+			}
+			return true;
+		});
+		Lua_helper.add_callback(lua, "getVariable", function(variable:String, ?theScript:String) {
+			var luaScript:FunkinLua = this;
+
+			if (theScript != null){
+				for (luaInstance in PlayState.instance.luaArray){
+					var nom:Array<String> = luaInstance.scriptName.split('/');
+					if (nom[nom.length-1].substr(0, -".lua".length) == theScript)
+						luaScript = luaInstance;
+				}
+			}
+			if (luaScript.variables.exists(variable))
+				return luaScript.variables.get(variable);
+			else
+				luaTrace('getVariable: Variable ('+variable+') Does Not Exist' , false, false, FlxColor.RED);
+			return null;
 		});
 
 		Lua_helper.add_callback(lua, "runHaxeCode", function(codeToRun:String, ?varsToBring:Any = null) {
