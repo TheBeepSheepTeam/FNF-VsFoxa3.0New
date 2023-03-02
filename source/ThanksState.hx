@@ -37,7 +37,7 @@ class ThanksState extends MusicBeatState
 		bg.setGraphicSize(Std.int(bg.width * 1.1));
 		bg.updateHitbox();
 		bg.screenCenter();
-		bg.antialiasing = ClientPrefs.antialiasing;
+		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
 
 		var foxaLogo:FlxSprite = new FlxSprite(FlxG.width, 0).loadGraphic(Paths.image('foxaEngineLogo'));
@@ -46,7 +46,7 @@ class ThanksState extends MusicBeatState
 		foxaLogo.x -= foxaLogo.frameHeight;
 		foxaLogo.y -= 180;
 		foxaLogo.alpha = 0.8;
-		foxaLogo.antialiasing = ClientPrefs.antialiasing;
+		foxaLogo.antialiasing = ClientPrefs.globalAntialiasing;
 		add(foxaLogo);
 
 		/*var txt:FlxText = new FlxText(0, 0, FlxG.width,
