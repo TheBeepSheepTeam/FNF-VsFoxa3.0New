@@ -6,6 +6,7 @@ import Discord.DiscordClient;
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
+import AchievementObject;
 import flixel.FlxCamera;
 import openfl.Assets;
 import flixel.addons.transition.FlxTransitionableState;

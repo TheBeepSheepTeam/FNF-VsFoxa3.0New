@@ -10,6 +10,7 @@ import WiggleEffect.WiggleEffectType;
 import flixel.FlxBasic;
 import flixel.FlxCamera;
 import flixel.FlxG;
+import AchievementObject;
 import flixel.FlxGame;
 import flixel.FlxObject;
 import flixel.FlxSprite;
