@@ -1166,7 +1166,6 @@ class PlayState extends MusicBeatState
 		iconP2.alpha = ClientPrefs.healthBarAlpha;
 		add(iconP2);
 
-		recalculateIconAnimations(true);
 		reloadHealthBarColors();
 
 		scoreTxt = new FlxText(0, healthBarBG.y + 36, FlxG.width, "", 20);
@@ -2699,7 +2698,6 @@ class PlayState extends MusicBeatState
 
 				var newCharacter:String = event.value2;
 				addCharacterToList(newCharacter, charType);
-				recalculateIconAnimations();
 
 			case 'Dadbattle Spotlight':
 				dadbattleBlack = new BGSprite(null, -800, -400, 0, 0);
@@ -3212,8 +3210,6 @@ class PlayState extends MusicBeatState
 
 	 */
 
-		recalculateIconAnimations();
-
 		// this is for the lerp swapping
 
 		switch (curIconSwing)
@@ -3253,15 +3249,38 @@ class PlayState extends MusicBeatState
 		if (health > 2)
 			health = 2;
 
-		if (healthBar.percent < 20)
-			iconP1.animation.curAnim.curFrame = 1;
+		if (iconP1.animation.frames == 3)
+		{
+			if (healthBar.percent < 20)
+				iconP1.animation.curAnim.curFrame = 1;
+			else if (healthBar.percent > 80)
+				iconP1.animation.curAnim.curFrame = 2;
+			else
+				iconP1.animation.curAnim.curFrame = 0;
+		}
 		else
-			iconP1.animation.curAnim.curFrame = 0;
-
-		if (healthBar.percent > 80)
-			iconP2.animation.curAnim.curFrame = 1;
+		{
+			if (healthBar.percent < 20)
+				iconP1.animation.curAnim.curFrame = 1;
+			else
+				iconP1.animation.curAnim.curFrame = 0;
+		}
+		if (iconP2.animation.frames == 3)
+		{
+			if (healthBar.percent > 80)
+				iconP2.animation.curAnim.curFrame = 1;
+			else if (healthBar.percent < 20)
+				iconP2.animation.curAnim.curFrame = 2;
+			else
+				iconP2.animation.curAnim.curFrame = 0;
+		}
 		else
-			iconP2.animation.curAnim.curFrame = 0;
+		{
+			if (healthBar.percent > 80)
+				iconP2.animation.curAnim.curFrame = 1;
+			else
+				iconP2.animation.curAnim.curFrame = 0;
+		}
 
 		if (FlxG.keys.anyJustPressed(debugKeysCharacter) && !endingSong && !inCutscene)
 		{
@@ -3661,8 +3680,7 @@ class PlayState extends MusicBeatState
 		var pressed:Bool = Reflect.getProperty(controls, key);
 		// trace('Control result: ' + pressed);
 		return pressed;
-	} */
-
+}*/
 	public function triggerEventNote(eventName:String, value1:String, value2:String)
 	{
 		switch (eventName)
@@ -4106,7 +4124,7 @@ class PlayState extends MusicBeatState
 				killMe = killMe[0].split('.');
 				if (killMe.length > 1)
 				{
-					LuaUtils.setVarInArray(LuaUtils.getPropertyLoop(killMe, true, true), killMe[killMe.length-1], value2);
+					LuaUtils.setVarInArray(LuaUtils.getPropertyLoop(killMe, true, true), killMe[killMe.length - 1], value2);
 				}
 				else
 				{
@@ -5660,81 +5678,6 @@ class PlayState extends MusicBeatState
 
 		setOnLuas('curBeat', curBeat); // DAWGG?????
 		callOnLuas('onBeatHit', []);
-	}
-
-	public function recalculateIconAnimations(?forceNeutral:Bool = false)
-	{
-		// find less buggy way of doing this
-		if (cpuControlled)
-		{
-			iconP1.changeIcon(boyfriend.healthIcon);
-		}
-		else if (iconP1.getCharacter() != boyfriend.healthIcon)
-		{
-			iconP1.changeIcon(boyfriend.healthIcon);
-		}
-		if (!forceNeutral)
-		{
-			switch (iconP1.widthThing)
-			{
-				case 150:
-					iconP1.animation.curAnim.curFrame = 0; // Neutral BF
-				case 300:
-					if (healthBar.percent < 20)
-					{
-						iconP1.animation.curAnim.curFrame = 1; // Losing BF
-					}
-					else if (healthBar.percent > 20)
-					{
-						iconP1.animation.curAnim.curFrame = 0; // Neutral BF
-					}
-				case 450:
-					if (healthBar.percent < 20)
-					{
-						iconP1.animation.curAnim.curFrame = 1; // Losing BF
-					}
-					else if (healthBar.percent > 20 && healthBar.percent < 80)
-					{
-						iconP1.animation.curAnim.curFrame = 0; // Neutral BF
-					}
-					else if (healthBar.percent > 80)
-					{
-						iconP1.animation.curAnim.curFrame = 2; // Winning BF
-					}
-			}
-			switch (iconP2.widthThing)
-			{
-				case 150:
-					iconP2.animation.curAnim.curFrame = 0; // Nuetral Oppt
-				case 300:
-					if (healthBar.percent < 80)
-					{
-						iconP2.animation.curAnim.curFrame = 0; // Nuetral Oppt
-					}
-					else if (healthBar.percent > 80)
-					{
-						iconP2.animation.curAnim.curFrame = 1; // Losing Oppt
-					}
-				case 450:
-					if (healthBar.percent < 20)
-					{
-						iconP2.animation.curAnim.curFrame = 2; // Winning Oppt
-					}
-					else if (healthBar.percent > 20 && healthBar.percent < 80)
-					{
-						iconP2.animation.curAnim.curFrame = 0; // Nuetral Oppt
-					}
-					else if (healthBar.percent > 80)
-					{
-						iconP2.animation.curAnim.curFrame = 1; // Losing Oppt
-					}
-			}
-		}
-		else
-		{
-			iconP1.animation.curAnim.curFrame = 0;
-			iconP2.animation.curAnim.curFrame = 0;
-		}
 	}
 
 	override function sectionHit()

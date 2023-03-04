@@ -99,9 +99,11 @@ class CustomMenuState extends MusicBeatState
 						interp.variables.set("add", add);
 						interp.variables.set("update", function(elapsed:Float)
 						{
+
 						});
 						interp.variables.set("create", function()
 						{
+
 						});
 						interp.variables.set("CustomMenuState", CustomMenuState);
 						interp.variables.set("CurrentCustomState", this);
