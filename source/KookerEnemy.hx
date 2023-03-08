@@ -15,7 +15,6 @@ class KookerEnemy extends FlxSprite
 	var brain:FSM;
 	var idleTimer:Float;
 	var moveDirection:Float;
-	var stepSound:FlxSound;
 
 	public var seesPlayer:Bool;
 	public var playerPosition:FlxPoint;
@@ -27,7 +26,7 @@ class KookerEnemy extends FlxSprite
 		super(x, y);
 		var graphic = Paths.image("minigame/kooker/kooker", 'shared');
 		loadGraphic(graphic, true, 64, 64);
-		setGraphicSize(128,128);
+		setGraphicSize(128, 128);
 		setFacingFlip(LEFT, false, false);
 		setFacingFlip(RIGHT, true, false);
 		animation.add("d", [0, 1, 0, 2], 6, false);
@@ -43,9 +42,6 @@ class KookerEnemy extends FlxSprite
 		idleTimer = 0;
 		seesPlayer = false;
 		playerPosition = FlxPoint.get();
-
-		stepSound = FlxG.sound.load(Paths.sound("footstep", 'shared'));
-		stepSound.proximity(x, y, FlxG.camera.target, FlxG.width * 0.6);
 	}
 
 	override public function update(elapsed:Float)
@@ -57,7 +53,7 @@ class KookerEnemy extends FlxSprite
 
 		if (!lockMovement)
 			move();
-		
+
 		brain.update(elapsed);
 		super.update(elapsed);
 	}
@@ -80,28 +76,21 @@ class KookerEnemy extends FlxSprite
 				else
 					facing = DOWN;
 			}
-	
+
 			switch (facing)
 			{
 				case LEFT, RIGHT:
 					animation.play("lr");
-	
+
 				case UP:
 					animation.play("u");
-	
+
 				case DOWN:
 					animation.play("d");
-	
+
 				case _:
 			}
 		}
-
-		if ((velocity.x != 0 || velocity.y != 0) && touching == NONE)
-		{
-			stepSound.setPosition(x + frameWidth / 2, y + height);
-			stepSound.play();
-		}
-	
 	}
 
 	public function idle(elapsed:Float)
