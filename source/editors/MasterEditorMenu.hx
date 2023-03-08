@@ -39,7 +39,7 @@ class MasterEditorMenu extends MusicBeatState
 
 	override function create()
 	{
-		FlxG.camera.bgColor = ;
+		FlxG.camera.bgColor = FlxColor.BLACK;
 		#if desktop
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("Editors Main Menu", null);
