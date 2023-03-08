@@ -31,7 +31,7 @@ class ExtrasMenuState extends MusicBeatState
 
 	private var grpControls:FlxTypedGroup<Alphabet>;
 
-	var everySongEver:Array<String> = [];
+	// var everySongEver:Array<String> = [];
 
 	override function create()
 	{
@@ -52,11 +52,12 @@ class ExtrasMenuState extends MusicBeatState
 
 		for (i in 0...controlsStrings.length)
 		{
-			var controlLabel:Alphabet = new Alphabet(0, (70 * i) + 30, controlsStrings[i], true, false);
-			controlLabel.isMenuItem = true;
-			controlLabel.targetY = i;
-			grpControls.add(controlLabel);
-			// DONT PUT X IN THE FIRST PARAMETER OF new ALPHABET() !!
+			var optionText:Alphabet = new Alphabet(290, 260, controlsStrings[i].name, true);
+			optionText.isMenuItem = true;
+			optionText.scaleX = 0.8;
+			optionText.scaleY = 0.8;
+			optionText.targetY = i;
+			grpOptions.add(optionText);
 		}
 
 		/* for (i in 0...StoryMenuState.weekData.length)
@@ -77,15 +78,16 @@ class ExtrasMenuState extends MusicBeatState
 				}
 		}*/
 
+        changeSelection();
+
 		super.create();
 	}
 
-	var canSelect:Bool = true;
 
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
-		if (controls.ACCEPT && canSelect)
+		if (controls.ACCEPT)
 		{
 			switch (curSelected)
 			{
@@ -106,17 +108,16 @@ class ExtrasMenuState extends MusicBeatState
 			//	FlxG.openURL(funnystring);
 		}
 
-		if (isSettingControl)
-			waitingInput();
-		else
-		{
-			if (controls.BACK && canSelect)
+			if (controls.BACK)
 				FlxG.switchState(new MainMenuState());
-			if (controls.UP_P && canSelect)
-				changeSelection(-1);
-			if (controls.DOWN_P && canSelect)
-				changeSelection(1);
-		}
+            if (controls.UI_UP_P)
+                {
+                    changeSelection(-1);
+                }
+                if (controls.UI_DOWN_P)
+                {
+                    changeSelection(1);
+                }
 	}
 
 	/* function randomThing():Void
@@ -138,24 +139,7 @@ class ExtrasMenuState extends MusicBeatState
 				PlayState.SONG = Song.loadFromJson(daSong, daSong);
 			FlxG.switchState(new PlayState());
 	}*/
-	function waitingInput():Void
-	{
-		if (FlxG.keys.getIsDown().length > 0)
-		{
-			PlayerSettings.player1.controls.replaceBinding(Control.LEFT, Keys, FlxG.keys.getIsDown()[0].ID, null);
-		}
-		// PlayerSettings.player1.controls.replaceBinding(Control)
-	}
 
-	var isSettingControl:Bool = false;
-
-	function changeBinding():Void
-	{
-		if (!isSettingControl)
-		{
-			isSettingControl = true;
-		}
-	}
 
 	function changeSelection(change:Int = 0)
 	{

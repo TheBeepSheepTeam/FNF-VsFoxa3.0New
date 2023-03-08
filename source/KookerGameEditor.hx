@@ -27,6 +27,8 @@ class KookerGameEditor extends MusicBeatState
 
 	override function create()
 	{
+		FlxG.mouse.visible = true;
+
 		#if desktop
 		DiscordClient.changePresence("Making a Kooker Map", "");
 		#end
