@@ -308,11 +308,11 @@ class CreditsState extends MusicBeatState
 				}
 			}
 
-			if (.ACCEPT && (creditsStuff[curSelected][3] == null || creditsStuff[curSelected][3].length > 4))
+			if (controls.ACCEPT && (creditsStuff[curSelected][3] == null || creditsStuff[curSelected][3].length > 4))
 			{
 				CoolUtil.browserLoad(creditsStuff[curSelected][3]);
 			}
-			if (.BACK)
+			if (controls.BACK)
 			{
 				if (colorTween != null)
 				{
