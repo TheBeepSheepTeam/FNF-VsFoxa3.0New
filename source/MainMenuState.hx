@@ -147,27 +147,27 @@ class MainMenuState extends MusicBeatState
 
 		/* magenta.loadGraphic(Paths.image('menuDesat'));
 
-		if (menuJSON.bgX != invalidPosition)
-			magenta.x = menuJSON.bgX;
-		if (menuJSON.bgY != invalidPosition)
-			magenta.y = menuJSON.bgY;
-		else
-			magenta.y = -80;
+			if (menuJSON.bgX != invalidPosition)
+				magenta.x = menuJSON.bgX;
+			if (menuJSON.bgY != invalidPosition)
+				magenta.y = menuJSON.bgY;
+			else
+				magenta.y = -80;
 
-		magenta.scrollFactor.set(0, yScroll);
-		magenta.setGraphicSize(Std.int(magenta.width * 1.175));
-		magenta.updateHitbox();
-		magenta.screenCenter();
-		magenta.visible = false;
-		magenta.antialiasing = ClientPrefs.globalAntialiasing;
-		if (menuJSON.colorOnConfirm != null && menuJSON.colorOnConfirm.length > 0)
-			magenta.color = FlxColor.fromRGB(menuJSON.colorOnConfirm[0], menuJSON.colorOnConfirm[1], menuJSON.colorOnConfirm[2]);
-		else
-			magenta.color = 0xFFfd719b;
+			magenta.scrollFactor.set(0, yScroll);
+			magenta.setGraphicSize(Std.int(magenta.width * 1.175));
+			magenta.updateHitbox();
+			magenta.screenCenter();
+			magenta.visible = false;
+			magenta.antialiasing = ClientPrefs.globalAntialiasing;
+			if (menuJSON.colorOnConfirm != null && menuJSON.colorOnConfirm.length > 0)
+				magenta.color = FlxColor.fromRGB(menuJSON.colorOnConfirm[0], menuJSON.colorOnConfirm[1], menuJSON.colorOnConfirm[2]);
+			else
+				magenta.color = 0xFFfd719b;
 
-		add(magenta);
+			add(magenta);
 
-		*/
+		 */
 
 		// magenta.scrollFactor.set();
 
@@ -355,7 +355,7 @@ class MainMenuState extends MusicBeatState
 										MusicBeatState.switchState(new CreditsState());
 									case 'options':
 										LoadingState.loadAndSwitchState(new options.OptionsState());
-                                                                        // THESE ARE FOR THE CUSTOM MENU STATES, DELETE IF YOU'RE MAKING YOUR OWN SOURCE CODE MOD
+									// THESE ARE FOR THE CUSTOM MENU STATES, DELETE IF YOU'RE MAKING YOUR OWN SOURCE CODE MOD
 									default:
 										MusicBeatState.switchState(new CustomMenuState(optionShit[curSelected], true));
 								}
@@ -371,6 +371,13 @@ class MainMenuState extends MusicBeatState
 				MusicBeatState.switchState(new MasterEditorMenu());
 			}
 			#end
+			if (FlxG.keys.justPressed.NINE)
+			{
+				// cuzsie made the original game thing system i based this thing off on
+				// and uhhh i need to sleep now so i will probably put the credits tomorrow!!!!
+				FlxG.switchState(new KookersForestGame());
+			}
+
 			if (controls.RESET && menuJSON.enableReloadKey)
 				FlxG.resetState();
 		}
