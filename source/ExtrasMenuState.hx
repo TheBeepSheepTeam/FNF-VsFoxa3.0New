@@ -52,12 +52,12 @@ class ExtrasMenuState extends MusicBeatState
 
 		for (i in 0...controlsStrings.length)
 		{
-			var optionText:Alphabet = new Alphabet(290, 260, controlsStrings[i].name, true);
+			var optionText:Alphabet = new Alphabet(290, 260, controlsStrings[i], true);
 			optionText.isMenuItem = true;
 			optionText.scaleX = 0.8;
 			optionText.scaleY = 0.8;
 			optionText.targetY = i;
-			grpOptions.add(optionText);
+			grpControls.add(optionText);
 		}
 
 		/* for (i in 0...StoryMenuState.weekData.length)
