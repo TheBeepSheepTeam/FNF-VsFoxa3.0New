@@ -240,7 +240,7 @@ class KookersForestGame extends MusicBeatState
 		txt.cameras = [camHUD];
 		add(txt);
 
-		FlxG.sound.play(Paths.sound('kookerLose', 'shared'));
+		FlxG.sound.play(Paths.sound('forestLose', 'shared'));
 
 		dead = true;
 	}
