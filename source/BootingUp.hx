@@ -67,7 +67,7 @@ class BootingUp extends MusicBeatState
 
 	override function create()
 	{
-		#if LUA_ALLOWED
+		/* #if LUA_ALLOWED
 		Paths.pushGlobalMods();
 		#end
 
@@ -88,7 +88,7 @@ class BootingUp extends MusicBeatState
 		PlayerSettings.init();
 		ClientPrefs.loadPrefs();
 
-		Highscore.load();
+		Highscore.load(); */
 
 		loadingMush = new FlxSprite().loadGraphic(Paths.image("foxaCacheBG"));
 		loadingMush.scale.set(0.4, 0.4);

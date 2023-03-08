@@ -91,6 +91,26 @@ class TitleState extends MusicBeatState
 		// Just to load a mod on start up if ya got one. For mods that change the menu music and bg
 		WeekData.loadTheFirstEnabledMod();
 
+		#if LUA_ALLOWED
+		Paths.pushGlobalMods();
+		#end
+
+		FlxG.save.bind('funkin', CoolUtil.getSavePath());
+		// PlayerSettings.init();
+
+		Paths.clearStoredMemory();
+		Paths.clearUnusedMemory();
+
+		FlxG.game.focusLostFramerate = 60;
+		#if desktop
+		FlxG.keys.preventDefaultKeys = [TAB];
+		#end
+
+		PlayerSettings.init();
+		ClientPrefs.loadPrefs();
+
+		Highscore.load();
+
 		// trace(path, FileSystem.exists(path));
 
 		/*#if (polymod && !html5)

@@ -7,6 +7,7 @@ import lime.utils.Assets as LimeAssets;
 import lime.utils.AssetLibrary;
 import lime.utils.AssetManifest;
 import flixel.system.FlxSound;
+import lime.system.Clipboard;
 #if sys
 import sys.io.File;
 import sys.FileSystem;
@@ -59,13 +60,13 @@ class CoolUtil
 	}
 
 	public function pasteFunction(prefix:String = ''):String
-		{
-			if (prefix.toLowerCase().endsWith('v'))
-				prefix = prefix.substring(0, prefix.length - 1);
-	
-			var txt:String = prefix + Clipboard.text.replace('\n', '');
-			return txt;
-		}
+	{
+		if (prefix.toLowerCase().endsWith('v'))
+			prefix = prefix.substring(0, prefix.length - 1);
+
+		var txt:String = prefix + Clipboard.text.replace('\n', '');
+		return txt;
+	}
 
 	public static function coolTextFile(path:String):Array<String>
 	{
@@ -147,14 +148,14 @@ class CoolUtil
 	}
 
 	public static function getIntArray(max:Int):Array<Int>
+	{
+		var arr:Array<Int> = [];
+		for (i in 0...max)
 		{
-			var arr:Array<Int> = [];
-			for (i in 0...max)
-			{
-				arr.push(i);
-			}
-			return arr;
+			arr.push(i);
 		}
+		return arr;
+	}
 
 	/** Quick Function to Fix Save Files for Flixel 5
 		if you are making a mod, you are gonna wanna change "ShadowMario" to something else
