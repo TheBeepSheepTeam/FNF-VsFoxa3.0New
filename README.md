@@ -24,6 +24,7 @@ same goes for *Lua Scripts*, comment out or delete the line with `LUA_ALLOWED`, 
 * Grits - Coder
 
 ### Vs. Foxa - Special Thanks
+* Cuzsie - Original Minigame System (for the first minigame lol)
 * BeastyGabi - Main Menu Customization
 
 ## Psych - Main Credits:
