@@ -55,7 +55,7 @@ class BootingUp extends MusicBeatState
 {
 	public var logoAnim:FlxSprite;
 	public var loadingMush:FlxSprite;
-	public var loadedTxt:FlxFixedText;
+	public var loadedTxt:FlxText;
 	public var loadedImages:Int = 0;
 	public var loadBar:FlxBar;
 	public var loadBarSpr:FlxSprite;
@@ -102,7 +102,7 @@ class BootingUp extends MusicBeatState
 		logoAnim.x += 500;
 		add(logoAnim);
 
-		loadedTxt = new FlxFixedText(400, 250, FlxG.width - 600, "PRELOADING MENU MUSIC", 32);
+		loadedTxt = new FlxText(400, 250, FlxG.width - 600, "PRELOADING MENU MUSIC", 32);
 		loadedTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		loadedTxt.scrollFactor.set();
 		loadedTxt.borderSize = 1.25;
