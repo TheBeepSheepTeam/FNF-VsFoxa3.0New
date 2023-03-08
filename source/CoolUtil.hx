@@ -58,6 +58,15 @@ class CoolUtil
 		return Math.max(min, Math.min(max, value));
 	}
 
+	public function pasteFunction(prefix:String = ''):String
+		{
+			if (prefix.toLowerCase().endsWith('v'))
+				prefix = prefix.substring(0, prefix.length - 1);
+	
+			var txt:String = prefix + Clipboard.text.replace('\n', '');
+			return txt;
+		}
+
 	public static function coolTextFile(path:String):Array<String>
 	{
 		var daList:Array<String> = [];

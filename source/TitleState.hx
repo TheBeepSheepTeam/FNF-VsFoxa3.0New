@@ -88,12 +88,6 @@ class TitleState extends MusicBeatState
 
 	override public function create():Void
 	{
-		Paths.clearStoredMemory();
-		Paths.clearUnusedMemory();
-
-		#if LUA_ALLOWED
-		Paths.pushGlobalMods();
-		#end
 		// Just to load a mod on start up if ya got one. For mods that change the menu music and bg
 		WeekData.loadTheFirstEnabledMod();
 
@@ -114,11 +108,9 @@ class TitleState extends MusicBeatState
 			}
 			#end */
 
-		FlxG.game.focusLostFramerate = 60;
 		FlxG.sound.muteKeys = muteKeys;
 		FlxG.sound.volumeDownKeys = volumeDownKeys;
 		FlxG.sound.volumeUpKeys = volumeUpKeys;
-		FlxG.keys.preventDefaultKeys = [TAB];
 
 		curWacky = FlxG.random.getObject(getIntroTextShit());
 
@@ -127,9 +119,6 @@ class TitleState extends MusicBeatState
 		swagShader = new ColorSwap();
 		super.create();
 
-		FlxG.save.bind('funkin', CoolUtil.getSavePath());
-
-		ClientPrefs.loadPrefs();
 
 		#if CHECK_FOR_UPDATES
 		if (ClientPrefs.checkForUpdates && !closedState)
@@ -157,8 +146,6 @@ class TitleState extends MusicBeatState
 			http.request();
 		}
 		#end
-
-		Highscore.load();
 
 		// IGNORE THIS!!!
 		titleJSON = Json.parse(Paths.getTextFromFile('images/gfDanceTitle.json'));
