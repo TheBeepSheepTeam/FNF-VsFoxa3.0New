@@ -3,7 +3,6 @@ package;
 import flixel.FlxSprite;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
-import Controls.Control;
 import flixel.FlxG;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;

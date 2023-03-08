@@ -27,7 +27,8 @@ class MasterEditorMenu extends MusicBeatState
 		'Dialogue Portrait Editor',
 		'Character Editor',
 		'Chart Editor',
-		'Credits Editor'
+		'Credits Editor',
+		'Kooker Level Editor'
 	];
 	private var grpTexts:FlxTypedGroup<Alphabet>;
 	private var directories:Array<String> = [null];
@@ -38,7 +39,7 @@ class MasterEditorMenu extends MusicBeatState
 
 	override function create()
 	{
-		FlxG.camera.bgColor = FlxColor.BLACK;
+		FlxG.camera.bgColor = ;
 		#if desktop
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("Editors Main Menu", null);
@@ -109,7 +110,7 @@ class MasterEditorMenu extends MusicBeatState
 
 		if (controls.BACK)
 		{
-			MusicBeatState.switchState(new MainMenuState());
+			MusicBeatState.switchState(new ExtrasMenuState());
 		}
 
 		if (controls.ACCEPT)
@@ -133,6 +134,8 @@ class MasterEditorMenu extends MusicBeatState
 					LoadingState.loadAndSwitchState(new ChartingState(), false);
 				case 'Credits Editor':
 					MusicBeatState.switchState(new CreditsEditorState());
+				case 'Kooker Level Editor':
+					MusicBeatState.switchState(new KookerGameEditor());
 			}
 			FlxG.sound.music.volume = 0;
 			#if PRELOAD_ALL

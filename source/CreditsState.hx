@@ -281,8 +281,8 @@ class CreditsState extends MusicBeatState
 				if (FlxG.keys.pressed.SHIFT)
 					shiftMult = 3;
 
-				var upP = controls.UI_UP_P;
-				var downP = controls.UI_DOWN_P;
+				var upP = .UI_UP_P;
+				var downP = .UI_DOWN_P;
 
 				if (upP)
 				{
@@ -295,7 +295,7 @@ class CreditsState extends MusicBeatState
 					holdTime = 0;
 				}
 
-				if (controls.UI_DOWN || controls.UI_UP)
+				if (.UI_DOWN || .UI_UP)
 				{
 					var checkLastHold:Int = Math.floor((holdTime - 0.5) * 10);
 					holdTime += elapsed;
@@ -303,16 +303,16 @@ class CreditsState extends MusicBeatState
 
 					if (holdTime > 0.5 && checkNewHold - checkLastHold > 0)
 					{
-						changeSelection((checkNewHold - checkLastHold) * (controls.UI_UP ? -shiftMult : shiftMult));
+						changeSelection((checkNewHold - checkLastHold) * (.UI_UP ? -shiftMult : shiftMult));
 					}
 				}
 			}
 
-			if (controls.ACCEPT && (creditsStuff[curSelected][3] == null || creditsStuff[curSelected][3].length > 4))
+			if (.ACCEPT && (creditsStuff[curSelected][3] == null || creditsStuff[curSelected][3].length > 4))
 			{
 				CoolUtil.browserLoad(creditsStuff[curSelected][3]);
 			}
-			if (controls.BACK)
+			if (.BACK)
 			{
 				if (colorTween != null)
 				{

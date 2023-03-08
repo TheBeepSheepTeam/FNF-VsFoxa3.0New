@@ -364,18 +364,10 @@ class MainMenuState extends MusicBeatState
 					});
 				}
 			}
-			#if desktop
 			else if (FlxG.keys.anyJustPressed(debugKeys))
 			{
 				selectedSomethin = true;
-				MusicBeatState.switchState(new MasterEditorMenu());
-			}
-			#end
-			if (FlxG.keys.justPressed.NINE)
-			{
-				// cuzsie made the original game thing system i based this thing off on
-				// and uhhh i need to sleep now so i will probably put the credits tomorrow!!!!
-				FlxG.switchState(new KookersForestGame());
+				MusicBeatState.switchState(new ExtrasMenuState());
 			}
 
 			if (controls.RESET && menuJSON.enableReloadKey)

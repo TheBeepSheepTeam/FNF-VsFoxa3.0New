@@ -26,7 +26,6 @@ import openfl.utils.ByteArray;
 import haxe.io.Bytes;
 import flixel.addons.api.FlxGameJolt;
 import flixel.input.gamepad.FlxGamepad;
-import Controls.KeyboardScheme;
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
