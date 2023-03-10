@@ -11,13 +11,13 @@ import openfl.display.Sprite;
 import openfl.events.Event;
 import openfl.display.StageScaleMode;
 import lime.app.Application;
+import openfl.events.KeyboardEvent;
+import openfl.ui.Keyboard;
 import core.ToastCore;
-
 #if desktop
 import Discord.DiscordClient;
 #end
-
-//crash handler stuff
+// crash handler stuff
 #if CRASH_HANDLER
 import openfl.events.UncaughtErrorEvent;
 import haxe.CallStack;
@@ -94,17 +94,19 @@ class Main extends Sprite
 			game.width = Math.ceil(stageWidth / game.zoom);
 			game.height = Math.ceil(stageHeight / game.zoom);
 		}
-	
+
 		Controls.init();
 		ClientPrefs.loadDefaultKeys();
-		addChild(new FlxGame(game.width, game.height, game.initialState, #if (flixel < "5.0.0") game.zoom, #end game.framerate, game.framerate, game.skipSplash, game.startFullscreen));
+		addChild(new FlxGame(game.width, game.height, game.initialState, #if (flixel < "5.0.0") game.zoom, #end game.framerate, game.framerate,
+			game.skipSplash, game.startFullscreen));
 
 		#if !mobile
 		fpsVar = new FPS(10, 3, 0xFFFFFF);
 		addChild(fpsVar);
 		Lib.current.stage.align = "tl";
 		Lib.current.stage.scaleMode = StageScaleMode.NO_SCALE;
-		if(fpsVar != null) {
+		if (fpsVar != null)
+		{
 			fpsVar.visible = ClientPrefs.showFPS;
 		}
 		#end
@@ -115,15 +117,17 @@ class Main extends Sprite
 		#end
 
 		Lib.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
-		
+
 		#if CRASH_HANDLER
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
 		#end
 
 		#if desktop
-		if (!DiscordClient.isInitialized) {
+		if (!DiscordClient.isInitialized)
+		{
 			DiscordClient.initialize();
-			Application.current.window.onClose.add(function() {
+			Application.current.window.onClose.add(function()
+			{
 				DiscordClient.shutdown();
 			});
 		}
@@ -131,13 +135,13 @@ class Main extends Sprite
 	}
 
 	function onKeyDown(evt:KeyboardEvent)
+	{
+		if (evt.keyCode == Keyboard.F2)
 		{
-			if (evt.keyCode == Keyboard.F2)
-			{
-				trace('SCREENSHOT');
-				CoolSystemStuff.screenshot();
-			}
+			trace('SCREENSHOT');
+			CoolSystemStuff.screenshot();
 		}
+	}
 
 	// Code was entirely made by sqirra-rng for their fnf engine named "Izzy Engine", big props to them!!!
 	// very cool person for real they don't get enough credit for their work
@@ -165,7 +169,9 @@ class Main extends Sprite
 			}
 		}
 
-		errMsg += "\nUncaught Error: " + e.error + "\nPlease report this error to the GitHub page: https://github.com/ShadowMario/FNF-PsychEngine\n\n> Crash Handler written by: sqirra-rng";
+		errMsg += "\nUncaught Error: "
+			+ e.error
+			+ "\nPlease report this error to the GitHub page: https://github.com/ShadowMario/FNF-PsychEngine\n\n> Crash Handler written by: sqirra-rng";
 
 		if (!FileSystem.exists("./crash/"))
 			FileSystem.createDirectory("./crash/");
