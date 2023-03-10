@@ -106,7 +106,7 @@ class TitleState extends MusicBeatState
 		FlxG.keys.preventDefaultKeys = [TAB];
 		#end
 
-		PlayerSettings.init();
+		// PlayerSettings.init();
 		ClientPrefs.loadPrefs();
 
 		Highscore.load();

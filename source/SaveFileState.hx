@@ -1,8 +1,7 @@
 package;
 
 // taken from vs marcello
-import Controls.KeyboardScheme;
-import Controls.Control;
+import Controls;
 import openfl.Lib;
 import flash.text.TextField;
 import flixel.FlxG;
@@ -53,7 +52,7 @@ class SaveFileState extends MusicBeatState
 
 		trace(controlsStrings);
 
-		menuBG.color = 0xFFB4194D;
+		menuBG.color = 0xFFD3547F;
 		menuBG.setGraphicSize(Std.int(menuBG.width * 1.1));
 		menuBG.updateHitbox();
 		menuBG.screenCenter();
@@ -137,7 +136,7 @@ class SaveFileState extends MusicBeatState
 	
 						for (i in 0...controlsStrings.length)
 						{
-							var controlLabel:Alphabet = new Alphabet(0, 0, controlsStrings[i], true, false);
+							var controlLabel:Alphabet = new Alphabet(0, 0, controlsStrings[i], true);
 							controlLabel.screenCenter();
 							controlLabel.y += (100 * (i - (controlsStrings.length / 2))) + 50;
 							grpControls.add(controlLabel);
@@ -197,7 +196,7 @@ class SaveFileState extends MusicBeatState
 
 		for (i in 0...savesAvailable.length)
 		{
-			var controlLabel:Alphabet = new Alphabet(0, 0, savesAvailable[i], true, false);
+			var controlLabel:Alphabet = new Alphabet(0, 0, savesAvailable[i], true);
 			controlLabel.screenCenter();
 			controlLabel.y += (100 * (i - (savesAvailable.length / 2))) + 50;
 			grpControls.add(controlLabel);
