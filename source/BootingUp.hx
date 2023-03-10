@@ -68,27 +68,27 @@ class BootingUp extends MusicBeatState
 	override function create()
 	{
 		/* #if LUA_ALLOWED
-		Paths.pushGlobalMods();
-		#end
+			Paths.pushGlobalMods();
+			#end
 
-		FlxG.save.bind('funkin', CoolUtil.getSavePath());
-		// PlayerSettings.init();
+			FlxG.save.bind('funkin', CoolUtil.getSavePath());
+			// PlayerSettings.init();
 
-		Paths.clearStoredMemory();
-		Paths.clearUnusedMemory();
+			Paths.clearStoredMemory();
+			Paths.clearUnusedMemory();
 
-		FlxG.game.focusLostFramerate = 60;
-		// FlxG.sound.muteKeys = muteKeys;
-		// FlxG.sound.volumeDownKeys = volumeDownKeys;
-		// FlxG.sound.volumeUpKeys = volumeUpKeys;
-		#if desktop
-		FlxG.keys.preventDefaultKeys = [TAB];
-		#end
+			FlxG.game.focusLostFramerate = 60;
+			// FlxG.sound.muteKeys = muteKeys;
+			// FlxG.sound.volumeDownKeys = volumeDownKeys;
+			// FlxG.sound.volumeUpKeys = volumeUpKeys;
+			#if desktop
+			FlxG.keys.preventDefaultKeys = [TAB];
+			#end
 
-		PlayerSettings.init();
-		ClientPrefs.loadPrefs();
+			PlayerSettings.init();
+			ClientPrefs.loadPrefs();
 
-		Highscore.load(); */
+			Highscore.load(); */
 
 		loadingMush = new FlxSprite().loadGraphic(Paths.image("foxaCacheBG"));
 		loadingMush.scale.set(0.4, 0.4);
