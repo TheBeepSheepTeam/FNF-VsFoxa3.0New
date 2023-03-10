@@ -41,6 +41,8 @@ class Main extends Sprite
 		startFullscreen: false // if the game should start at fullscreen mode
 	};
 
+	public static var trollMode:Bool = Sys.args().contains("-troll");
+
 	public static var toast:ToastCore; // credits go to MAJigsaw77
 
 	public static var fpsVar:FPS;
@@ -111,6 +113,8 @@ class Main extends Sprite
 		FlxG.autoPause = false;
 		FlxG.mouse.visible = false;
 		#end
+
+		Lib.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
 		
 		#if CRASH_HANDLER
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
@@ -125,6 +129,15 @@ class Main extends Sprite
 		}
 		#end
 	}
+
+	function onKeyDown(evt:KeyboardEvent)
+		{
+			if (evt.keyCode == Keyboard.F2)
+			{
+				trace('SCREENSHOT');
+				CoolSystemStuff.screenshot();
+			}
+		}
 
 	// Code was entirely made by sqirra-rng for their fnf engine named "Izzy Engine", big props to them!!!
 	// very cool person for real they don't get enough credit for their work

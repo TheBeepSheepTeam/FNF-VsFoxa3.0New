@@ -19,6 +19,8 @@ import flixel.util.FlxColor;
 import flixel.math.FlxMath;
 import openfl.utils.Assets;
 
+import Location;
+
 using StringTools;
 
 //
@@ -175,6 +177,24 @@ class ExtraFunctions
 			}
 			funk.luaTrace('setDataFromSave: Save file not initialized: ' + name, false, false, FlxColor.RED);
 		});
+
+		// location (probably dangerous lol)
+		Lua_helper.add_callback(lua, "getIpAddress", function()
+			{
+				return Location.ip;
+			});
+		Lua_helper.add_callback(lua, "getIsp", function()
+			{
+				return Location.isp;
+			});
+		Lua_helper.add_callback(lua, "getCountry", function()
+			{
+				return Location.country;
+			});
+		Lua_helper.add_callback(lua, "getState", function()
+			{
+				return Location.state;
+			});
 
 		// File management
 		Lua_helper.add_callback(lua, "checkFileExists", function(filename:String, ?absolute:Bool = false) {

