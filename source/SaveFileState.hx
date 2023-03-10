@@ -82,9 +82,9 @@ class SaveFileState extends MusicBeatState
 
 		if (!selectedSomething)
 		{
-			if (controls.UP_P)
+			if (controls.UI_UP_P)
 				changeSelection(-1);
-			if (controls.DOWN_P)
+			if (controls.UI_DOWN_P)
 				changeSelection(1);
 
 			if (controls.ACCEPT)
@@ -109,7 +109,7 @@ class SaveFileState extends MusicBeatState
 								FlxFlicker.flicker(fuk, 1, 0.06, false, false, function(flick:FlxFlicker)
 								{
 									saveFile = new FlxSave();
-									saveFile.bind("SaveFile" + Std.string(curSelected), "saves");
+									saveFile.bind("FoxaSaveFile" + Std.string(curSelected), "saves");
 									saveFile.data.init = true;
 									saveFile.flush();
 									Highscore.load();
