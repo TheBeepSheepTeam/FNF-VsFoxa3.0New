@@ -44,8 +44,9 @@ typedef MenuData =
 
 class MainMenuState extends MusicBeatState
 {
-	public static var foxaModVersion:String = '3.0'; // idk tho
-	public static var psychEngineVersion:String = '0.6.3'; // This is also used for Discord RPC
+	// can somebody help me do to the folder organization cuz i cant do it myself
+	public static var foxaModVersion:String = '3.0 WIP'; // idk tho
+	public static var psychEngineVersion:String = '0.6.4b'; // This is also used for Discord RPC
 	public static var curSelected:Int = 0;
 
 	var menuItems:FlxTypedGroup<FlxSprite>;

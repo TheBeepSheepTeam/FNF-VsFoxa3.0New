@@ -6,19 +6,16 @@ import llua.LuaL;
 import llua.State;
 import llua.Convert;
 #end
-
 #if sys
 import sys.FileSystem;
 import sys.io.File;
 #end
-
 import flixel.FlxSprite;
 import flixel.FlxG;
 import flixel.util.FlxSave;
 import flixel.util.FlxColor;
 import flixel.math.FlxMath;
 import openfl.utils.Assets;
-
 import Location;
 
 using StringTools;
@@ -26,13 +23,12 @@ using StringTools;
 //
 // Things to trivialize some dumb stuff like splitting strings on older Lua
 //
-
 class ExtraFunctions
 {
 	public static function implement(funk:FunkinLua)
 	{
 		var lua:State = funk.lua;
-		
+
 		// Keyboard & Gamepads
 		Lua_helper.add_callback(lua, "keyboardJustPressed", function(name:String)
 		{
@@ -106,43 +102,65 @@ class ExtraFunctions
 			return Reflect.getProperty(controller.justReleased, name) == true;
 		});
 
-		Lua_helper.add_callback(lua, "keyJustPressed", function(name:String = '') {
+		Lua_helper.add_callback(lua, "keyJustPressed", function(name:String = '')
+		{
 			name = name.toLowerCase();
-			switch(name) {
-				case 'left': return PlayState.instance.controls.NOTE_LEFT_P;
-				case 'down': return PlayState.instance.controls.NOTE_DOWN_P;
-				case 'up': return PlayState.instance.controls.NOTE_UP_P;
-				case 'right': return PlayState.instance.controls.NOTE_RIGHT_P;
-				default: return PlayState.instance.controls.justPressed(name);
+			switch (name)
+			{
+				case 'left':
+					return PlayState.instance.controls.NOTE_LEFT_P;
+				case 'down':
+					return PlayState.instance.controls.NOTE_DOWN_P;
+				case 'up':
+					return PlayState.instance.controls.NOTE_UP_P;
+				case 'right':
+					return PlayState.instance.controls.NOTE_RIGHT_P;
+				default:
+					return PlayState.instance.controls.justPressed(name);
 			}
 			return false;
 		});
-		Lua_helper.add_callback(lua, "keyPressed", function(name:String = '') {
+		Lua_helper.add_callback(lua, "keyPressed", function(name:String = '')
+		{
 			name = name.toLowerCase();
-			switch(name) {
-				case 'left': return PlayState.instance.controls.NOTE_LEFT;
-				case 'down': return PlayState.instance.controls.NOTE_DOWN;
-				case 'up': return PlayState.instance.controls.NOTE_UP;
-				case 'right': return PlayState.instance.controls.NOTE_RIGHT;
-				default: return PlayState.instance.controls.pressed(name);
+			switch (name)
+			{
+				case 'left':
+					return PlayState.instance.controls.NOTE_LEFT;
+				case 'down':
+					return PlayState.instance.controls.NOTE_DOWN;
+				case 'up':
+					return PlayState.instance.controls.NOTE_UP;
+				case 'right':
+					return PlayState.instance.controls.NOTE_RIGHT;
+				default:
+					return PlayState.instance.controls.pressed(name);
 			}
 			return false;
 		});
-		Lua_helper.add_callback(lua, "keyReleased", function(name:String = '') {
+		Lua_helper.add_callback(lua, "keyReleased", function(name:String = '')
+		{
 			name = name.toLowerCase();
-			switch(name) {
-				case 'left': return PlayState.instance.controls.NOTE_LEFT_R;
-				case 'down': return PlayState.instance.controls.NOTE_DOWN_R;
-				case 'up': return PlayState.instance.controls.NOTE_UP_R;
-				case 'right': return PlayState.instance.controls.NOTE_RIGHT_R;
-				default: return PlayState.instance.controls.justReleased(name);
+			switch (name)
+			{
+				case 'left':
+					return PlayState.instance.controls.NOTE_LEFT_R;
+				case 'down':
+					return PlayState.instance.controls.NOTE_DOWN_R;
+				case 'up':
+					return PlayState.instance.controls.NOTE_UP_R;
+				case 'right':
+					return PlayState.instance.controls.NOTE_RIGHT_R;
+				default:
+					return PlayState.instance.controls.justReleased(name);
 			}
 			return false;
 		});
 
 		// Save data management
-		Lua_helper.add_callback(lua, "initSaveData", function(name:String, ?folder:String = 'psychenginemods') {
-			if(!PlayState.instance.modchartSaves.exists(name))
+		Lua_helper.add_callback(lua, "initSaveData", function(name:String, ?folder:String = 'psychenginemods')
+		{
+			if (!PlayState.instance.modchartSaves.exists(name))
 			{
 				var save:FlxSave = new FlxSave();
 				// folder goes unused for flixel 5 users. @BeastlyGhost
@@ -152,16 +170,18 @@ class ExtraFunctions
 			}
 			funk.luaTrace('initSaveData: Save file already initialized: ' + name);
 		});
-		Lua_helper.add_callback(lua, "flushSaveData", function(name:String) {
-			if(PlayState.instance.modchartSaves.exists(name))
+		Lua_helper.add_callback(lua, "flushSaveData", function(name:String)
+		{
+			if (PlayState.instance.modchartSaves.exists(name))
 			{
 				PlayState.instance.modchartSaves.get(name).flush();
 				return;
 			}
 			funk.luaTrace('flushSaveData: Save file not initialized: ' + name, false, false, FlxColor.RED);
 		});
-		Lua_helper.add_callback(lua, "getDataFromSave", function(name:String, field:String, ?defaultValue:Dynamic = null) {
-			if(PlayState.instance.modchartSaves.exists(name))
+		Lua_helper.add_callback(lua, "getDataFromSave", function(name:String, field:String, ?defaultValue:Dynamic = null)
+		{
+			if (PlayState.instance.modchartSaves.exists(name))
 			{
 				var retVal:Dynamic = Reflect.field(PlayState.instance.modchartSaves.get(name).data, field);
 				return retVal;
@@ -169,8 +189,9 @@ class ExtraFunctions
 			funk.luaTrace('getDataFromSave: Save file not initialized: ' + name, false, false, FlxColor.RED);
 			return defaultValue;
 		});
-		Lua_helper.add_callback(lua, "setDataFromSave", function(name:String, field:String, value:Dynamic) {
-			if(PlayState.instance.modchartSaves.exists(name))
+		Lua_helper.add_callback(lua, "setDataFromSave", function(name:String, field:String, value:Dynamic)
+		{
+			if (PlayState.instance.modchartSaves.exists(name))
 			{
 				Reflect.setField(PlayState.instance.modchartSaves.get(name).data, field, value);
 				return;
@@ -180,38 +201,39 @@ class ExtraFunctions
 
 		// location (probably dangerous lol)
 		Lua_helper.add_callback(lua, "getIpAddress", function()
-			{
-				return Location.ip;
-			});
+		{
+			return Location.ip;
+		});
 		Lua_helper.add_callback(lua, "getIsp", function()
-			{
-				return Location.isp;
-			});
+		{
+			return Location.isp;
+		});
 		Lua_helper.add_callback(lua, "getCountry", function()
-			{
-				return Location.country;
-			});
+		{
+			return Location.country;
+		});
 		Lua_helper.add_callback(lua, "getState", function()
-			{
-				return Location.state;
-			});
+		{
+			return Location.state;
+		});
 
 		// File management
-		Lua_helper.add_callback(lua, "checkFileExists", function(filename:String, ?absolute:Bool = false) {
+		Lua_helper.add_callback(lua, "checkFileExists", function(filename:String, ?absolute:Bool = false)
+		{
 			#if MODS_ALLOWED
-			if(absolute)
+			if (absolute)
 			{
 				return FileSystem.exists(filename);
 			}
 
 			var path:String = Paths.modFolders(filename);
-			if(FileSystem.exists(path))
+			if (FileSystem.exists(path))
 			{
 				return true;
 			}
 			return FileSystem.exists(Paths.getPath('assets/$filename', TEXT));
 			#else
-			if(absolute)
+			if (absolute)
 			{
 				return Assets.exists(filename);
 			}
@@ -220,26 +242,30 @@ class ExtraFunctions
 		});
 		Lua_helper.add_callback(lua, "saveFile", function(path:String, content:String, ?absolute:Bool = false)
 		{
-			try {
-				if(!absolute)
+			try
+			{
+				if (!absolute)
 					File.saveContent(Paths.mods(path), content);
 				else
 					File.saveContent(path, content);
 
 				return true;
-			} catch (e:Dynamic) {
+			}
+			catch (e:Dynamic)
+			{
 				funk.luaTrace("saveFile: Error trying to save " + path + ": " + e, false, false, FlxColor.RED);
 			}
 			return false;
 		});
 		Lua_helper.add_callback(lua, "deleteFile", function(path:String, ?ignoreModFolders:Bool = false)
 		{
-			try {
+			try
+			{
 				#if MODS_ALLOWED
-				if(!ignoreModFolders)
+				if (!ignoreModFolders)
 				{
 					var lePath:String = Paths.modFolders(path);
-					if(FileSystem.exists(lePath))
+					if (FileSystem.exists(lePath))
 					{
 						FileSystem.deleteFile(lePath);
 						return true;
@@ -248,25 +274,32 @@ class ExtraFunctions
 				#end
 
 				var lePath:String = Paths.getPath(path, TEXT);
-				if(Assets.exists(lePath))
+				if (Assets.exists(lePath))
 				{
 					FileSystem.deleteFile(lePath);
 					return true;
 				}
-			} catch (e:Dynamic) {
+			}
+			catch (e:Dynamic)
+			{
 				funk.luaTrace("deleteFile: Error trying to delete " + path + ": " + e, false, false, FlxColor.RED);
 			}
 			return false;
 		});
-		Lua_helper.add_callback(lua, "getTextFromFile", function(path:String, ?ignoreModFolders:Bool = false) {
+		Lua_helper.add_callback(lua, "getTextFromFile", function(path:String, ?ignoreModFolders:Bool = false)
+		{
 			return Paths.getTextFromFile(path, ignoreModFolders);
 		});
-		Lua_helper.add_callback(lua, "directoryFileList", function(folder:String) {
+		Lua_helper.add_callback(lua, "directoryFileList", function(folder:String)
+		{
 			var list:Array<String> = [];
 			#if sys
-			if(FileSystem.exists(folder)) {
-				for (folder in FileSystem.readDirectory(folder)) {
-					if (!list.contains(folder)) {
+			if (FileSystem.exists(folder))
+			{
+				for (folder in FileSystem.readDirectory(folder))
+				{
+					if (!list.contains(folder))
+					{
 						list.push(folder);
 					}
 				}
@@ -276,56 +309,69 @@ class ExtraFunctions
 		});
 
 		// String tools
-		Lua_helper.add_callback(lua, "stringStartsWith", function(str:String, start:String) {
+		Lua_helper.add_callback(lua, "stringStartsWith", function(str:String, start:String)
+		{
 			return str.startsWith(start);
 		});
-		Lua_helper.add_callback(lua, "stringEndsWith", function(str:String, end:String) {
+		Lua_helper.add_callback(lua, "stringEndsWith", function(str:String, end:String)
+		{
 			return str.endsWith(end);
 		});
-		Lua_helper.add_callback(lua, "stringSplit", function(str:String, split:String) {
+		Lua_helper.add_callback(lua, "stringSplit", function(str:String, split:String)
+		{
 			return str.split(split);
 		});
-		Lua_helper.add_callback(lua, "stringTrim", function(str:String) {
+		Lua_helper.add_callback(lua, "stringTrim", function(str:String)
+		{
 			return str.trim();
 		});
-		
-				// Regex
-		Lua_helper.add_callback(lua, "regexMatch", function(str:String, toMatch:String, flag:String = "i") {
+
+		// Regex
+		Lua_helper.add_callback(lua, "regexMatch", function(str:String, toMatch:String, flag:String = "i")
+		{
 			return new EReg(str, flag).match(toMatch);
 		});
-		Lua_helper.add_callback(lua, "regexSubMatch", function(str:String, toMatch:String, pos:Int, len:Int = -1, flag:String = "i") {
+		Lua_helper.add_callback(lua, "regexSubMatch", function(str:String, toMatch:String, pos:Int, len:Int = -1, flag:String = "i")
+		{
 			return new EReg(str, flag).matchSub(toMatch, pos, len);
 		});
-		Lua_helper.add_callback(lua, "regexFindMatchAt", function(str:String, toMatch:String, n:Int, flag:String = "i") {
+		Lua_helper.add_callback(lua, "regexFindMatchAt", function(str:String, toMatch:String, n:Int, flag:String = "i")
+		{
 			var theData = new EReg(str, flag);
 			theData.match(toMatch);
 			return theData.matched(n);
 		});
-		Lua_helper.add_callback(lua, "regexFindFirstMatch", function(str:String, toMatch:String, flag:String = "i") {
+		Lua_helper.add_callback(lua, "regexFindFirstMatch", function(str:String, toMatch:String, flag:String = "i")
+		{
 			var theData = new EReg(str, flag);
 			theData.match(toMatch);
 			return theData.matchedLeft();
 		});
-		Lua_helper.add_callback(lua, "regexFindLastMatch", function(str:String, toMatch:String, flag:String = "i") {
+		Lua_helper.add_callback(lua, "regexFindLastMatch", function(str:String, toMatch:String, flag:String = "i")
+		{
 			var theData = new EReg(str, flag);
 			theData.match(toMatch);
 			return theData.matchedRight();
 		});
-		Lua_helper.add_callback(lua, "regexMatchPosition", function(str:String, toMatch:String, flag:String = "i") {
+		Lua_helper.add_callback(lua, "regexMatchPosition", function(str:String, toMatch:String, flag:String = "i")
+		{
 			var data = new EReg(str, flag);
 			data.match(toMatch);
 			var theData = data.matchedPos();
 			return [theData.pos, theData.len];
 		});
-		Lua_helper.add_callback(lua, "regexReplace", function(str:String, toReplace:String, replacement:String, flag:String = "i") {
+		Lua_helper.add_callback(lua, "regexReplace", function(str:String, toReplace:String, replacement:String, flag:String = "i")
+		{
 			return new EReg(str, flag).replace(toReplace, replacement);
 		});
-		Lua_helper.add_callback(lua, "regexSplit", function(str:String, toSplit:String, flag:String = "i") {
+		Lua_helper.add_callback(lua, "regexSplit", function(str:String, toSplit:String, flag:String = "i")
+		{
 			return new EReg(str, flag).split(toSplit);
 		});
 
 		// Randomization
-		Lua_helper.add_callback(lua, "getRandomInt", function(min:Int, max:Int = FlxMath.MAX_VALUE_INT, exclude:String = '') {
+		Lua_helper.add_callback(lua, "getRandomInt", function(min:Int, max:Int = FlxMath.MAX_VALUE_INT, exclude:String = '')
+		{
 			var excludeArray:Array<String> = exclude.split(',');
 			var toExclude:Array<Int> = [];
 			for (i in 0...excludeArray.length)
@@ -334,7 +380,8 @@ class ExtraFunctions
 			}
 			return FlxG.random.int(min, max, toExclude);
 		});
-		Lua_helper.add_callback(lua, "getRandomFloat", function(min:Float, max:Float = 1, exclude:String = '') {
+		Lua_helper.add_callback(lua, "getRandomFloat", function(min:Float, max:Float = 1, exclude:String = '')
+		{
 			var excludeArray:Array<String> = exclude.split(',');
 			var toExclude:Array<Float> = [];
 			for (i in 0...excludeArray.length)
@@ -343,7 +390,8 @@ class ExtraFunctions
 			}
 			return FlxG.random.float(min, max, toExclude);
 		});
-		Lua_helper.add_callback(lua, "getRandomBool", function(chance:Float = 50) {
+		Lua_helper.add_callback(lua, "getRandomBool", function(chance:Float = 50)
+		{
 			return FlxG.random.bool(chance);
 		});
 	}
