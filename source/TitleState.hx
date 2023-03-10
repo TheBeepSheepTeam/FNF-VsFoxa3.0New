@@ -109,7 +109,7 @@ class TitleState extends MusicBeatState
 		// PlayerSettings.init();
 		ClientPrefs.loadPrefs();
 
-		Highscore.load();
+		// Highscore.load();
 
 		// trace(path, FileSystem.exists(path));
 
