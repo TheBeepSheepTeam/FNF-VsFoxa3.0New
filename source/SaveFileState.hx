@@ -113,7 +113,7 @@ class SaveFileState extends MusicBeatState
 									saveFile.data.init = true;
 									saveFile.flush();
 									Highscore.load();
-									FlxG.switchState(new MainMenuState());		
+									FlxG.switchState(new ThanksState());		
 								});
 							}
 						}
