@@ -1,0 +1,18 @@
+{
+	"song": {
+		"speed": 2,
+		"stage": "whitt",
+		"player1": "bf",
+		"player2": "foxa",
+		"player3": null,
+		"events": [],
+		"notes": [],
+		"splashSkin": null,
+		"validScore": false,
+		"gfVersion": "Gf-whit",
+		"bpm": 120,
+		"arrowSkin": null,
+		"needsVoices": true,
+		"song": "Bubbles"
+	}
+}

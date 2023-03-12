@@ -1,3 +1,7 @@
+package;
+
+import Conductor;
+
 class Rating
 {
 	public var name:String = '';

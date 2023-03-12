@@ -1,7 +1,10 @@
 package;
 
+import Alphabet;
+import DialogueCharacter;
 import flixel.FlxG;
 import flixel.FlxSprite;
+import flixel.FlxSubState;
 import flixel.addons.text.FlxTypeText;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxSpriteGroup;
@@ -9,21 +12,15 @@ import flixel.input.FlxKeyManager;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
-import flixel.FlxSubState;
 import haxe.Json;
 import haxe.format.JsonParser;
-import Alphabet;
+import openfl.utils.Assets;
 #if sys
 import sys.FileSystem;
 import sys.io.File;
 #end
-import openfl.utils.Assets;
-import DialogueCharacter;
 
 using StringTools;
-
-// Gonna try to kind of make it compatible to Forever Engine,
-// love u Shubs no homo :flushedh4:
 
 typedef DialogueFile =
 {

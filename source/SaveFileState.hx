@@ -37,7 +37,7 @@ class SaveFileState extends MusicBeatState
 	override function create()
 	{
 		var menuBG:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
-		
+
 		for (i in 0...3)
 		{
 			var save:FlxSave = new FlxSave();
@@ -94,9 +94,9 @@ class SaveFileState extends MusicBeatState
 					if (!deleteMode)
 					{
 						selectedSomething = true;
-							
+
 						FlxG.sound.play(Paths.sound('confirmMenu'));
-		
+
 						for (i in 0...grpControls.length)
 						{
 							var fuk:Alphabet = grpControls.members[i];
@@ -113,7 +113,7 @@ class SaveFileState extends MusicBeatState
 									saveFile.data.init = true;
 									saveFile.flush();
 									Highscore.load();
-									FlxG.switchState(new ThanksState());		
+									FlxG.switchState(new ThanksState());
 								});
 							}
 						}
@@ -133,7 +133,7 @@ class SaveFileState extends MusicBeatState
 					else
 					{
 						grpControls.clear();
-	
+
 						for (i in 0...controlsStrings.length)
 						{
 							var controlLabel:Alphabet = new Alphabet(0, 0, controlsStrings[i], true);
@@ -142,7 +142,7 @@ class SaveFileState extends MusicBeatState
 							grpControls.add(controlLabel);
 							// DONT PUT X IN THE FIRST PARAMETER OF new ALPHABET() !!
 						}
-		
+
 						curSelected = 0;
 						changeSelection(curSelected);
 					}
@@ -162,7 +162,7 @@ class SaveFileState extends MusicBeatState
 		trace("Erased Save File " + (id + 1));
 		save.bind("FoxaSaveFile" + Std.string(id), "saves");
 		save.flush();
-		
+
 		emptySave[id] = true;
 		controlsStrings[id] = "Save File " + Std.string(id + 1) + " Empty";
 		idkLol();
@@ -185,7 +185,7 @@ class SaveFileState extends MusicBeatState
 
 		grpControls.clear();
 
-		var savesAvailable:Array<String> = []; 
+		var savesAvailable:Array<String> = [];
 
 		for (i in 0...savesCanDelete.length)
 		{
@@ -213,7 +213,7 @@ class SaveFileState extends MusicBeatState
 		#if !switch
 		// NGio.logEvent('Fresh');
 		#end
-		
+
 		FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
 
 		curSelected += change;

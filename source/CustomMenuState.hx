@@ -66,7 +66,7 @@ class CustomMenuState extends MusicBeatState
 	public static var filesInserted:Array<String> = [];
 
 	public static var interp:Interp;
-	
+
 	var folders:Array<String> = [Paths.getPreloadPath('custom_states/')];
 
 	public function new(name:String = "", isMenuState:Bool = false)
@@ -99,11 +99,9 @@ class CustomMenuState extends MusicBeatState
 						interp.variables.set("add", add);
 						interp.variables.set("update", function(elapsed:Float)
 						{
-
 						});
 						interp.variables.set("create", function()
 						{
-
 						});
 						interp.variables.set("CustomMenuState", CustomMenuState);
 						interp.variables.set("CurrentCustomState", this);
@@ -188,52 +186,55 @@ class CustomMenuState extends MusicBeatState
 			MusicBeatState.switchState(new MainMenuState());
 		}
 	}
-	
+
 	var lastCalledFunction:String = '';
-		
+
 	public function addHaxeLibrary(libName:String, ?libFolder:String = '')
 	{
-			try {
-				// taken from funkinlua!!1!!!
-				var str:String = '';
-				if(libFolder.length > 0)
-					str = libFolder + '.';
+		try
+		{
+			// taken from funkinlua!!1!!!
+			var str:String = '';
+			if (libFolder.length > 0)
+				str = libFolder + '.';
 
-				interp.variables.set(libName, Type.resolveClass(str + libName));
-			}
-			catch (e:Dynamic) {
-				Main.toast.create('State Code Error', 0xFFFF0000, name + ': ' + lastCalledFunction + ' - No library set! Please set it.');
-				trace('STATE CODE ERROR: ' + name + ": " + lastCalledFunction + " - No library set! Please set it.");
-			}
+			interp.variables.set(libName, Type.resolveClass(str + libName));
+		}
+		catch (e:Dynamic)
+		{
+			Main.toast.create('State Code Error', 0xFFFF0000, name + ': ' + lastCalledFunction + ' - No library set! Please set it.');
+			trace('STATE CODE ERROR: ' + name + ": " + lastCalledFunction + " - No library set! Please set it.");
+		}
 	}
 
 	public function callOnHscript(functionToCall:String, ?params:Array<Any>):Dynamic
 	{
 		lastCalledFunction = functionToCall;
-			
+
 		if (interp == null)
 		{
 			return null;
-	        }
-	        try {
-		 if (interp.variables.exists(functionToCall))
-		 {
-			var functionH = interp.variables.get(functionToCall);
-			if (params == null)
-			{
-				var result = null;
-				result = functionH();
-				return result;
-			}
-			else
-			{
-				var result = null;
-				result = Reflect.callMethod(null, functionH, params);
-				return result;
-			}
-		 }
 		}
-		catch(e:Dynamic) 
+		try
+		{
+			if (interp.variables.exists(functionToCall))
+			{
+				var functionH = interp.variables.get(functionToCall);
+				if (params == null)
+				{
+					var result = null;
+					result = functionH();
+					return result;
+				}
+				else
+				{
+					var result = null;
+					result = Reflect.callMethod(null, functionH, params);
+					return result;
+				}
+			}
+		}
+		catch (e:Dynamic)
 		{
 			trace(e);
 		}

@@ -1,7 +1,6 @@
 package;
 
 import Song.SwagSong;
-
 import Rating;
 
 /**

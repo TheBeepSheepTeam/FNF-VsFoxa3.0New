@@ -9,7 +9,6 @@ import flixel.math.FlxPoint;
 import flixel.util.FlxTimer;
 import flixel.system.FlxSound;
 import flash.media.Sound;
-
 import AlphaCharacter;
 
 using StringTools;

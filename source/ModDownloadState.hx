@@ -65,14 +65,14 @@ class ModDownloadState extends MusicBeatState
 	public static var finished:Bool = false;
 
 	public static var alreadyExcecuted:Bool = false;
-	
+
 	public static var copier:Process;
 	public static var deleter:Process;
 	public static var cleaner:Process;
 	public static var extractor:Process;
 
 	public static var fileConfirmed:Bool = false;
-	
+
 	var UI_box:FlxUITabMenu;
 
 	override public function create()
@@ -266,12 +266,11 @@ class ModDownloadState extends MusicBeatState
 							if (!alreadyExcecuted)
 							{
 								cleaner = new Process('rmdir /s /q "${coolerFile.replace('.zip', '')}"');
-                                cleaner.close();
+								cleaner.close();
 								alreadyExcecuted = true;
 							}
 							canExit = true;
 							alreadyPressed = false;
-
 						}
 						else
 						{
@@ -282,7 +281,7 @@ class ModDownloadState extends MusicBeatState
 								// Only works on windows, sorry linux and mac users :(
 								// Execute commands IN ORDER, so like, when the command is finished, the next command'll execute
 								// Using process to stop command line floods
-							    copier = new Process('robocopy "${coolerFile.replace('.zip', '')}/$folder" "mods/$folder" /e & rmdir /s /q "${coolerFile.replace('.zip', '')}"');
+								copier = new Process('robocopy "${coolerFile.replace('.zip', '')}/$folder" "mods/$folder" /e & rmdir /s /q "${coolerFile.replace('.zip', '')}"');
 								copier.close();
 								fileConfirmed = true;
 								alreadyExcecuted = true;
@@ -299,7 +298,7 @@ class ModDownloadState extends MusicBeatState
 				}
 			}
 
-			if (FileSystem.exists(coolFile.replace('.zip', '')) && finished && !fileConfirmed) 
+			if (FileSystem.exists(coolFile.replace('.zip', '')) && finished && !fileConfirmed)
 			{
 				for (folder in FileSystem.readDirectory(coolFile.replace('.zip', '') + '/'))
 				{

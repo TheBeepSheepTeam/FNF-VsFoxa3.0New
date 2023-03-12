@@ -78,11 +78,10 @@ class ExtrasMenuState extends MusicBeatState
 				}
 		}*/
 
-        changeSelection();
+		changeSelection();
 
 		super.create();
 	}
-
 
 	override function update(elapsed:Float)
 	{
@@ -108,16 +107,16 @@ class ExtrasMenuState extends MusicBeatState
 			//	FlxG.openURL(funnystring);
 		}
 
-			if (controls.BACK)
-				FlxG.switchState(new MainMenuState());
-            if (controls.UI_UP_P)
-                {
-                    changeSelection(-1);
-                }
-                if (controls.UI_DOWN_P)
-                {
-                    changeSelection(1);
-                }
+		if (controls.BACK)
+			FlxG.switchState(new MainMenuState());
+		if (controls.UI_UP_P)
+		{
+			changeSelection(-1);
+		}
+		if (controls.UI_DOWN_P)
+		{
+			changeSelection(1);
+		}
 	}
 
 	/* function randomThing():Void
@@ -139,8 +138,6 @@ class ExtrasMenuState extends MusicBeatState
 				PlayState.SONG = Song.loadFromJson(daSong, daSong);
 			FlxG.switchState(new PlayState());
 	}*/
-
-
 	function changeSelection(change:Int = 0)
 	{
 		//		#if !switch

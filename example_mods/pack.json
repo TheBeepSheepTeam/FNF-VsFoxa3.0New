@@ -1,7 +1,11 @@
 {
 	"name": "Name",
 	"description": "Description",
-	"restart":false,
+	"restart": false,
 	"runsGlobally": false,
-	"color": [170, 0, 255]
+	"color": [
+		170,
+		0,
+		255
+	]
 }

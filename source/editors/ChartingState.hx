@@ -443,13 +443,14 @@ class ChartingState extends MusicBeatState
 		};
 
 		/* later
-		var check_record = new FlxUICheckBox(200, 600, null, null, "Record Key Presses", 100);
-		check_record.checked = false;
-		check_record.callback = function() recording = check_record.checked;
+			var check_record = new FlxUICheckBox(200, 600, null, null, "Record Key Presses", 100);
+			check_record.checked = false;
+			check_record.callback = function() recording = check_record.checked;
 
-		var check_record_snap = new FlxUICheckBox(200, 625, null, null, "Snap Recorded Notes to Grid", 100);
-		check_record_snap.checked = true;
-		check_record_snap.callback = function() recSnap = check_record_snap.checked;*/
+			var check_record_snap = new FlxUICheckBox(200, 625, null, null, "Snap Recorded Notes to Grid", 100);
+			check_record_snap.checked = true;
+			check_record_snap.callback = function() recSnap = check_record_snap.checked; 
+		 */
 
 		var saveButton:FlxButton = new FlxButton(110, 8, "Save", function()
 		{
@@ -3154,7 +3155,6 @@ class ChartingState extends MusicBeatState
 
 		updateGrid();
 	}
-
 
 	private function addNote(strum:Null<Float> = null, data:Null<Int> = null, type:Null<Int> = null):Void
 	{

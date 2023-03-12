@@ -32,8 +32,8 @@ class Paths
 
 	#if MODS_ALLOWED
 	public static var ignoreModFolders:Array<String> = [
-		'characters', 'custom_events', 'custom_notetypes', 'data', 'songs', 'music', 'sounds', 'shaders', 'videos', 'images', 'stages', 'weeks', 'fonts',
-		'scripts', 'achievements', 'options'
+		'characters', 'custom_events', 'custom_notetypes', 'custom_states', 'data', 'songs', 'music', 'sounds', 'shaders', 'videos', 'images', 'stages',
+		'weeks', 'fonts', 'scripts', 'achievements', 'options'
 	];
 	#end
 
@@ -287,7 +287,7 @@ class Paths
 		#end
 		return 'assets/fonts/$key';
 	}
-	
+
 	inline static public function state(key:String)
 	{
 		return mods('custom_states/$key');
