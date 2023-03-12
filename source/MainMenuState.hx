@@ -111,9 +111,6 @@ class MainMenuState extends MusicBeatState
 				'awards',
 				#end
 				'credits',
-				#if !switch
-				'donate',
-				#end
 				'options'
 			];
 		}

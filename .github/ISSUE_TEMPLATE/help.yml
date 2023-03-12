@@ -27,6 +27,7 @@ body:
         - "Windows x64"
         - "Windows x86/x32"
         - "Linux"
+        - "Android"
         - "Mac"
         - "HTML5/Browser"
         - "Flash/Air-based target"

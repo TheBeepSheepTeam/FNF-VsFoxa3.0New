@@ -4,9 +4,6 @@
 
 	<app title="Friday Night Funkin': Vs. Foxa 3.0" file="VsFoxa" packageName="com.foxatheartist.vsfoxa" package="com.foxatheartist.vsfoxa" main="Main" version="0.2.8" company="foxatheartist" />
 
-	<!--Switch Export with Unique ApplicationID and Icon-->
-	<set name="APP_ID" value="0x0100f6c013bbc000" />
-
 	<!-- NOTE TO SELF: DISABLE THIS IF ISSUES ARE FOUND -->
 	<haxedef name="LINC_LUA_RELATIVE_DYNAMIC_LIB"/> <!-- stable luas PUT AFTER FIRST LINE WITH APP NAME AND ETC -->
 
@@ -30,10 +27,8 @@
 	<window if="desktop" orientation="landscape" fullscreen="false" resizable="true" vsync="false"/>
 
 	<!--Mobile-specific-->
-	<window if="mobile" orientation="landscape" fullscreen="true" width="0" height="0" resizable="false"/>
-
-	<!--Switch-specific-->
-	<window if="switch" orientation="landscape" fullscreen="true" width="0" height="0" resizable="true" />
+	<!--i dont think i trust android kids so i am just gonna comment this out for now-->
+	<!--<window if="mobile" orientation="landscape" fullscreen="true" width="0" height="0" resizable="false"/>-->
 
 	<!-- _____________________________ Path Settings ____________________________ -->
 
@@ -49,7 +44,7 @@
 	<define name="ACHIEVEMENTS_ALLOWED" />
 	<define name="VIDEOS_ALLOWED" if="desktop || web" unless="32bits"/>
 	<define name="PSYCH_WATERMARKS"/> <!-- DELETE THIS TO REMOVE WATERMARKS/DEV NAMES ON TITLE SCREEN -->
-	<define name="TITLE_SCREEN_EASTER_EGG" if="officialBuild"/> <!-- DELETE THE if="officialBuild" for enabling this on an unofficial build -->
+	<define name="TITLE_SCREEN_EASTER_EGG"/>
 	<define name="CRASH_HANDLER" if="desktop release" />
 
 	<assets path="assets/preload" rename="assets" exclude="*.ogg" if="web"/>
@@ -111,6 +106,7 @@
 		<assets path='example_mods' rename='mods' embed='false'/>
 	</section>
 	<assets path='art/readme.txt' rename='do NOT readme.txt' />
+	<assets path='stuff' />
 	<assets path='header.lua'/>
 	<!-- <template path='mods' /> -->
 	
@@ -136,7 +132,6 @@
 	<haxelib name="flixel-ui" />
 	<haxelib name="linc_luajit" if="LUA_ALLOWED"/>
 	<haxelib name="hxCodec" if="VIDEOS_ALLOWED"/>
-	<haxelib name="faxe" if='switch'/>
 	<!--<haxelib name="polymod"/> -->
 	<haxelib name="discord_rpc" if="desktop"/>
 
@@ -152,7 +147,7 @@
 	<!-- ______________________________ Haxedefines _____________________________ -->
 
 	<!--Enable the Flixel core recording system-->
-	<!--<haxedef name="FLX_RECORD" />-->
+	<haxedef name="FLX_RECORD" />
 
 	<!--Disable the right and middle mouse buttons-->
 	<!-- <haxedef name="FLX_NO_MOUSE_ADVANCED" /> -->
@@ -175,8 +170,14 @@
 	<!--Disable the Flixel core focus lost screen-->
 	<haxedef name="FLX_NO_FOCUS_LOST_SCREEN" />
 
+	<!--Replace "funkin" with the name a package of Haxe classes to preserve for use by HScript.-->
+	<haxeflag name="--macro" value="include('funkin')" />
+
+	<!--Disable Dead Code Elimination-->
+	<haxeflag name="-dce no" />
+
 	<!--Allow working memory greater than 1 Gig-->
-	<!--haxedef name="HXCPP_GC_BIG_BLOCKS"-->
+	<haxedef name="HXCPP_GC_BIG_BLOCKS"/>
 	
 	<!-- Show debug traces for hxCodec -->
 	<haxedef name="HXC_DEBUG_TRACE" if="debug" />

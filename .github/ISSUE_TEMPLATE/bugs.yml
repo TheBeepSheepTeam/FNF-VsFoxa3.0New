@@ -35,6 +35,7 @@ body:
         - "Windows"
         - "Linux"
         - "Mac"
+        - "Android"
         - "HTML5"
         - "Flash/Air-based target"
         - "Neko, HashLink, or other build system"
