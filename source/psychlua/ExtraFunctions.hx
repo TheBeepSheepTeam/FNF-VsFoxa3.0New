@@ -319,7 +319,7 @@ class ExtraFunctions
 				if (FileSystem.exists(json)) {
 					foundJson = true;
 				} else {
-					luaTrace('parseJsonData: Invalid json file path!', false, false, FlxColor.RED);
+					funk.luaTrace('parseJsonData: Invalid json file path!', false, false, FlxColor.RED);
 					foundJson = false;
 					return;	
 				}
@@ -327,7 +327,7 @@ class ExtraFunctions
 				if (Assets.exists(json)) {
 					foundJson = true;
 				} else {
-					luaTrace('parseJsonData: Invalid json file path!', false, false, FlxColor.RED);
+					funk.luaTrace('parseJsonData: Invalid json file path!', false, false, FlxColor.RED);
 					foundJson = false;
 					return;	
 				}
