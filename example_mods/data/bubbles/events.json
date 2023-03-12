@@ -1,18 +1,56 @@
 {
 	"song": {
-		"speed": 2,
-		"stage": "whitt",
-		"player1": "bf",
-		"player2": "foxa",
-		"player3": null,
-		"events": [],
-		"notes": [],
-		"splashSkin": null,
-		"validScore": false,
-		"gfVersion": "Gf-whit",
-		"bpm": 120,
-		"arrowSkin": null,
-		"needsVoices": true,
-		"song": "Bubbles"
+		"events": [
+			[
+				64000,
+				[
+					[
+						"Cinematics",
+						"1",
+						"0.5"
+					]
+				]
+			],
+			[
+				66000,
+				[
+					[
+						"Cinematics",
+						"2",
+						"0.5"
+					],
+					[
+						"Flash Camera",
+						"0.3",
+						""
+					]
+				]
+			],
+			[
+				98000,
+				[
+					[
+						"Cinematics",
+						"1",
+						"0.5"
+					]
+				]
+			],
+			[
+				99375,
+				[
+					[
+						"Cinematics",
+						"2",
+						"0.5"
+					],
+					[
+						"Flash Camera",
+						"0.3",
+						""
+					]
+				]
+			]
+		]
 	}
 }
