@@ -90,7 +90,7 @@ class ModOptions extends BaseOptionsMenu
 		for (map in optionMap.keys())
 		{
 			var save:FlxSave = new FlxSave();
-			var dir = map == '' ? 'psychenginemods' : 'psychenginemods/$map/';
+			var dir = map == '' ? 'foxaenginemods' : 'foxaenginemods/$map/';
 
 			save.bind('options', dir);
 

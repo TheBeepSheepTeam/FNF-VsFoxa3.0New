@@ -5,6 +5,7 @@ using StringTools;
 
 class InputFormatter
 {
+	// Something from Week 7's control system idk
 	public static function getKeyName(key:FlxKey):String
 	{
 		switch (key)

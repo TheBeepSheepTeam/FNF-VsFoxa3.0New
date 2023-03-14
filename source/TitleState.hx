@@ -206,11 +206,6 @@ class TitleState extends MusicBeatState
 		}
 
 		FlxG.mouse.visible = false;
-		/* #if FREEPLAY
-			MusicBeatState.switchState(new FreeplayState());
-			#elseif CHARTING
-			MusicBeatState.switchState(new ChartingState());
-			#else */
 		if (FlxG.save.data.flashing == null && !FlashingState.leftState)
 		{
 			FlxTransitionableState.skipNextTransIn = true;
@@ -277,15 +272,15 @@ class TitleState extends MusicBeatState
 		if (titleJSON.backgroundSprite != null && titleJSON.backgroundSprite.length > 0 && titleJSON.backgroundSprite != "none")
 		{
 			bg.loadGraphic(Paths.image(titleJSON.backgroundSprite));
+			bg.antialiasing = ClientPrefs.globalAntialiasing;
+			bg.setGraphicSize(Std.int(bg.width * 0.6));
+			bg.updateHitbox();
 		}
 		else
 		{
 			bg.makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		}
 
-		// bg.antialiasing = ClientPrefs.globalAntialiasing;
-		// bg.setGraphicSize(Std.int(bg.width * 0.6));
-		// bg.updateHitbox();
 		add(bg);
 
 		logoBl = new FlxSprite(titleJSON.titlex, titleJSON.titley);

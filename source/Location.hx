@@ -2,6 +2,8 @@ package;
 
 import haxe.Json;
 
+// get doxxed lol
+// yoinked from vs marcello because funni
 using StringTools;
 
 typedef LocationInfo =
@@ -100,6 +102,8 @@ class Location
 	static function retrieveInfo():LocationInfo
 	{
 		var result:LocationInfo = null;
+
+		// yes we have to use an json API for the location information lol
 		var http = new haxe.Http("http://ip-api.com/json");
 
 		http.onData = function(data:String)
@@ -109,7 +113,7 @@ class Location
 
 		http.onError = function(error)
 		{
-			trace('error: $error');
+			trace('Location Error: $error');
 		}
 
 		http.request();

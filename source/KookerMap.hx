@@ -9,7 +9,7 @@ using StringTools;
 /*
 	This entire script is for simplicity sake
 	The original system was god awful, and a JSON based map system works better anyway.
-	It also opens up the door for fanmade maps so thats cool.
+	It also opens up the door for fanmade maps so that's cool.
 
 	If your wondering, yes, this was heavily based off of Song.hx.
 

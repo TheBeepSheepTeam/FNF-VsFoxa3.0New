@@ -24,7 +24,6 @@ import haxe.CallStack;
 import haxe.io.Path;
 import sys.FileSystem;
 import sys.io.File;
-import sys.io.Process;
 #end
 
 using StringTools;
@@ -37,7 +36,7 @@ class Main extends Sprite
 		initialState: TitleState, // initial game state
 		zoom: -1.0, // game state bounds
 		framerate: 60, // default framerate
-		skipSplash: true, // if the default flixel splash screen should be skipped
+		skipSplash: false, // if the default flixel splash screen should be skipped
 		startFullscreen: false // if the game should start at fullscreen mode
 	};
 
@@ -47,7 +46,7 @@ class Main extends Sprite
 
 	public static var fpsVar:FPS;
 
-	// You can pretty much ignore everything from here on - your code should go in your states.
+	// You can pretty much ignore everything from here on - your code should go in your states. (Unless, there is something critical to fix, I guess.)
 
 	public static function main():Void
 	{
@@ -156,7 +155,7 @@ class Main extends Sprite
 		dateNow = dateNow.replace(" ", "_");
 		dateNow = dateNow.replace(":", "'");
 
-		path = "./crash/" + "PsychEngine_" + dateNow + ".txt";
+		path = "./crash/" + "VsFoxa_" + dateNow + ".txt";
 
 		for (stackItem in callStack)
 		{
@@ -171,7 +170,7 @@ class Main extends Sprite
 
 		errMsg += "\nUncaught Error: "
 			+ e.error
-			+ "\nPlease report this error to the GitHub page: https://github.com/ShadowMario/FNF-PsychEngine\n\n> Crash Handler written by: sqirra-rng";
+			+ "\nPlease report this error to the GitHub page: https://github.com/TheBeepSheepTeam/FNF-VsFoxa3.0New\n\n> Crash Handler written by: sqirra-rng";
 
 		if (!FileSystem.exists("./crash/"))
 			FileSystem.createDirectory("./crash/");
@@ -181,7 +180,7 @@ class Main extends Sprite
 		Sys.println(errMsg);
 		Sys.println("Crash dump saved in " + Path.normalize(path));
 
-		Application.current.window.alert(errMsg, "Error!");
+		Application.current.window.alert(errMsg, "Vs. Foxa | Error!");
 		DiscordClient.shutdown();
 		Sys.exit(1);
 	}

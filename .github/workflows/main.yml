@@ -6,9 +6,9 @@ name: Build
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ foxa ]
+    branches: [foxa]
   pull_request:
-    branches: [ foxa ]
+    branches: [foxa]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -45,7 +45,7 @@ jobs:
         uses: actions/upload-artifact@v2.2.4
         with:
           name: linuxBuild
-          path: 'export/release/linux/bin'
+          path: "export/release/linux/bin"
   buildWindows:
     runs-on: windows-latest
 

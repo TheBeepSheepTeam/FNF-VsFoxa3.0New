@@ -1,27 +1,31 @@
 # Friday Night Funkin' - Foxa Engine
 Engine based off on Psych Engine which was originally used on [Mind Games Mod](https://gamebanana.com/mods/301107), intended to be a fix for the vanilla version's many issues while keeping the casual play aspect of it. Also aiming to be an easier alternative to newbie coders.
 
+**THIS ENGINE WAS MADE FOR VS FOXA 3.0**
+
 ## Installation:
 You must have [the most up-to-date version of Haxe, most notably 4.2.5](https://haxe.org/download/), seriously, stop using 4.1.5, it misses a lot of stuff.
 
-open up a Command Prompt/PowerShell or Terminal, type `haxelib install hmm`
+Open up a Command Prompt/PowerShell or Terminal, type `haxelib install hmm`
 
-after it finishes, simply type `haxelib run hmm install` in order to install all the needed libraries for *Foxa Engine!*
+After it finishes, simply type `haxelib run hmm install` in order to install all the needed libraries for *Foxa Engine!*
+
+(You can still do it the old-fashioned way, but that is a big no-no, as the **Haxe Module Manager** is recommended.)
 
 ## Customization:
 
-if you wish to disable things like *Lua Scripts* or *Video Cutscenes*, you can read over to `Project.xml`
+If you wish to disable things like *Lua Scripts* or *Video Cutscenes*, you can read over to `Project.xml`.
 
-inside `Project.xml`, you will find several variables to customize Psych Engine to your liking
+Inside `Project.xml`, you will find several variables to customize Foxa Engine to your liking.
 
-to start you off, disabling Videos should be simple, simply Delete the line `"VIDEOS_ALLOWED"` or comment it out by wrapping the line in XML-like comments, like this `<!-- YOUR_LINE_HERE -->`
+To start you off, disabling videos should be simple, simply Delete the line `"VIDEOS_ALLOWED"` or comment it out by wrapping the line in XML-like comments (it's a XML file, no worries.), like this `<!-- YOUR_LINE_HERE -->`.
 
-same goes for *Lua Scripts*, comment out or delete the line with `LUA_ALLOWED`, this and other customization options are all available within the `Project.xml` file
+Same goes for *Lua Scripts*, comment out or delete the line with `LUA_ALLOWED`, this and other customization options are all available within the `Project.xml` file.
 
 ## Vs. Foxa - Main Credits
 * Foxa - Main Director, Composer, Spriter, Charter, LUA Coder
 * KookerFoxYT/CharlesCatYT - Main Coder, 2nd Director, Composer, Spriter
-* Grits - Coder
+* ~~Grits - Coder~~
 
 ### Vs. Foxa - Special Thanks
 * Cuzsie - Original Minigame System (for the first minigame lol)
@@ -89,12 +93,12 @@ _____________________________________
 * Despite using a different format for charts made with this, you can use charts from other engines such as Kade Engine, the base game engine, or even Forever Engine!
 * You can change a note's type on the Editor, it comes with two example types:
   * GF Sing: Forces GF to play a note animation, instead of Boyfriend, or the opponent.
-  * Alt Animation: Forces an alt animation to play, useful for songs like Ugh/Stress
+  * Alt Animation: Forces an alt animation to play, useful for songs like Ugh and Stress.
   * Hey: Forces a "Hey" animation instead of the base Sing animation, if Boyfriend hits this note, Girlfriend will do a "Hey!" too.
 
 ## Multiple editors to assist you in making your own Mod
 ![Screenshot_3](https://user-images.githubusercontent.com/44785097/144629914-1fe55999-2f18-4cc1-bc70-afe616d74ae5.png)
-* Working both for source code modding and downloaded builds! It even includes a credits editor, just for those who wanna save time.
+* Working both for source code modding and downloaded builds! It even includes a Credits editor, just for those who wanna save time.
 
 ## Story mode menu rework:
 ![](https://i.imgur.com/UB2EKpV.png)

@@ -49,7 +49,7 @@ class FPS extends TextField
 		currentFPS = 144;
 		selectable = false;
 		mouseEnabled = true;
-		defaultTextFormat = new TextFormat(Paths.font("vcr.ttf"), 13, color); // this is how to change you're fonts, piss babies
+		defaultTextFormat = new TextFormat(Paths.font("vcr.ttf"), 13, color); // this is how to change your fonts, piss babies
 		autoSize = LEFT;
 		multiline = true;
 		text = "FPS: ";
@@ -80,7 +80,7 @@ class FPS extends TextField
 		}
 
 		var currentCount = times.length;
-		currentFPS = Math.round((currentCount + cacheCount) / 2);
+		currentFPS = FlxMath.roundDecimal((currentCount + cacheCount) / 2);
 		if (currentFPS > ClientPrefs.framerate)
 			currentFPS = ClientPrefs.framerate;
 

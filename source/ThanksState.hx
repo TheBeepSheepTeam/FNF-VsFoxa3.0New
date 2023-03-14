@@ -51,13 +51,6 @@ class ThanksState extends MusicBeatState
 		foxaLogo.antialiasing = ClientPrefs.globalAntialiasing;
 		add(foxaLogo);
 
-		/*
-			var txt:FlxText = new FlxText(0, 0, FlxG.width,
-			"Thanks for playing the Foxa Mod Beta!\nThis took months to make and we hope you enjoy it.\nThis is a Dev "
-			+ "\n\nPress Space to continue.",
-			32); 
-		 */
-
 		var txt:FlxText = new FlxText(0, 0, FlxG.width,
 			"Thanks for playing Vs. Foxa 3.0 ALPHA!\nThis build is in a WIP state, so you might experience a lot of bugs.\nDo not leak this build,\nor else the devs will find your body!\nAnyway, enjoy this unfinished\nbuild of the update!" +
 			"\n\nPress Enter to continue.",

@@ -55,7 +55,7 @@ class ClientPrefs
 		'instakill' => false,
 		'practice' => false,
 		'botplay' => false,
-		'opponentplay' => false
+		// 'opponentplay' => false
 	];
 
 	public static var comboOffset:Array<Int> = [0, 0, 0, 0];
@@ -120,6 +120,7 @@ class ClientPrefs
 		FlxG.save.data.lowQuality = lowQuality;
 		FlxG.save.data.shaders = shaders;
 		FlxG.save.data.framerate = framerate;
+		// these 2 options were leftover from the week 7 update, might make it an option just for that specific week!
 		// FlxG.save.data.cursing = cursing;
 		// FlxG.save.data.violence = violence;
 		FlxG.save.data.camZooms = camZooms;

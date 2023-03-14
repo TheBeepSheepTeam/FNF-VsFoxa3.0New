@@ -1,8 +1,10 @@
 package;
 
+import flixel.FlxCamera;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxSubState;
+import flixel.addons.display.FlxBackdrop;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.input.keyboard.FlxKey;
@@ -11,12 +13,13 @@ import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
-import flixel.FlxCamera;
 import flixel.util.FlxStringUtil;
 
 class PauseSubState extends MusicBeatSubstate
 {
 	var grpMenuShit:FlxTypedGroup<Alphabet>;
+
+	var bg:FlxBackdrop;
 
 	var menuItems:Array<String> = [];
 	var menuItemsOG:Array<String> = [
@@ -86,8 +89,14 @@ class PauseSubState extends MusicBeatSubstate
 
 		FlxG.sound.list.add(pauseMusic);
 
-		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
+		var bgBack:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
+		bgBack.alpha = 0;
+		bgBack.scrollFactor.set();
+		add(bgBack);
+
+		bg = new FlxBackdrop(Paths.image('ui/checkeredBG', 'preload'), #if (flixel_addons < "3.0.0") 1, 1, true, true, #else XY, #end 1, 1);
 		bg.alpha = 0;
+		bg.antialiasing = true;
 		bg.scrollFactor.set();
 		add(bg);
 
@@ -151,9 +160,14 @@ class PauseSubState extends MusicBeatSubstate
 
 	var holdTime:Float = 0;
 	var cantUnpause:Float = 0.1;
+	var scrollSpeed:Float = 50;
 
 	override function update(elapsed:Float)
 	{
+		bg.x -= scrollSpeed * elapsed;
+		bg.y -= scrollSpeed * elapsed;
+
+		timeElapsed += elapsed;
 		cantUnpause -= elapsed;
 		if (pauseMusic.volume < 0.5)
 			pauseMusic.volume += 0.01 * elapsed;
