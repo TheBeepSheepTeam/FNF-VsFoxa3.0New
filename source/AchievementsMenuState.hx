@@ -3,17 +3,18 @@ package;
 #if desktop
 import Discord.DiscordClient;
 #end
+import Achievements;
 import flash.text.TextField;
 import flixel.FlxG;
 import flixel.FlxSprite;
+import flixel.FlxSubState;
+import flixel.addons.display.FlxBackdrop;
 import flixel.addons.display.FlxGridOverlay;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import lime.utils.Assets;
-import flixel.FlxSubState;
-import Achievements;
 
 using StringTools;
 
@@ -24,6 +25,10 @@ class AchievementsMenuState extends MusicBeatState
 	private var grpOptions:FlxTypedGroup<Alphabet>;
 
 	private static var curSelected:Int = 0;
+
+	var bgBackdrop:FlxBackdrop;
+
+	var timeElapsed:Float = 0;
 
 	private var achievementArray:Array<AttachedAchievement> = [];
 	private var achievementIndex:Array<Int> = [];
@@ -41,6 +46,12 @@ class AchievementsMenuState extends MusicBeatState
 		menuBG.screenCenter();
 		menuBG.antialiasing = ClientPrefs.globalAntialiasing;
 		add(menuBG);
+
+		bgBackdrop = new FlxBackdrop(Paths.image('checkeredBG', 'preload'), #if (flixel_addons < "3.0.0") 1, 1, true, true, #else XY, #end 1, 1);
+		bgBackdrop.alpha = 0;
+		bgBackdrop.antialiasing = true;
+		bgBackdrop.scrollFactor.set();
+		add(bgBackdrop);
 
 		grpOptions = new FlxTypedGroup<Alphabet>();
 		add(grpOptions);
@@ -83,6 +94,12 @@ class AchievementsMenuState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
+		var scrollSpeed:Float = 50;
+		bgBackdrop.x -= scrollSpeed * elapsed;
+		bgBackdrop.y -= scrollSpeed * elapsed;
+
+		timeElapsed += elapsed;
+
 		super.update(elapsed);
 
 		if (controls.UI_UP_P)

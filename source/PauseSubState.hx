@@ -21,6 +21,8 @@ class PauseSubState extends MusicBeatSubstate
 
 	var bg:FlxBackdrop;
 
+	var timeElapsed:Float = 0;
+
 	var menuItems:Array<String> = [];
 	var menuItemsOG:Array<String> = [
 		'Resume',
@@ -94,7 +96,7 @@ class PauseSubState extends MusicBeatSubstate
 		bgBack.scrollFactor.set();
 		add(bgBack);
 
-		bg = new FlxBackdrop(Paths.image('ui/checkeredBG', 'preload'), #if (flixel_addons < "3.0.0") 1, 1, true, true, #else XY, #end 1, 1);
+		bg = new FlxBackdrop(Paths.image('checkeredBG', 'preload'), #if (flixel_addons < "3.0.0") 1, 1, true, true, #else XY, #end 1, 1);
 		bg.alpha = 0;
 		bg.antialiasing = true;
 		bg.scrollFactor.set();

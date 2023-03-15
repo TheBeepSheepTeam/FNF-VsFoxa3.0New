@@ -83,7 +83,7 @@ class CoolSystemStuff
 		dateNow = StringTools.replace(dateNow, " ", "_");
 		dateNow = StringTools.replace(dateNow, ":", "'");
 
-		File.saveBytes(Sys.getCwd() + "\\screenshots\\" + "VsFoxaUpdate-" + dateNow + ".png", bytes);
+		File.saveBytes(Sys.getCwd() + "\\screenshots\\" + "VsFoxa-" + dateNow + ".png", bytes);
 	}
 
 	public static function executableFileName():Dynamic // idk what type it was originally

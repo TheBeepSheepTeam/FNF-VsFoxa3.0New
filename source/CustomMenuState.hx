@@ -115,6 +115,7 @@ class CustomMenuState extends MusicBeatState
 						interp.variables.set("FlxGame", flixel.FlxGame);
 						interp.variables.set("FlxObject", flixel.FlxObject);
 						interp.variables.set("FlxSprite", flixel.FlxSprite);
+						interp.variables.set("Alphabet", Alphabet);
 						interp.variables.set("FlxBackdrop", flixel.addons.display.FlxBackdrop);
 						interp.variables.set("FlxState", flixel.FlxState);
 						interp.variables.set("FlxSubState", flixel.FlxSubState);
@@ -128,6 +129,7 @@ class CustomMenuState extends MusicBeatState
 						interp.variables.set("FlxAtlasFrames", flixel.graphics.frames.FlxAtlasFrames);
 						interp.variables.set("FlxTypedGroup", flixel.group.FlxGroup.FlxTypedGroup);
 						interp.variables.set("FlxMath", flixel.math.FlxMath);
+						// this one prevents the compile this error is unrelated to this how is that possible
 						// interp.variables.set("FlxPoint", flixel.math.FlxPoint);
 						interp.variables.set("FlxRect", flixel.math.FlxRect);
 						interp.variables.set("FlxSound", flixel.system.FlxSound);

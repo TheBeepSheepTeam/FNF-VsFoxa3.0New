@@ -3,35 +3,37 @@ package;
 #if desktop
 import Discord.DiscordClient;
 #end
-import flash.text.TextField;
-import flixel.FlxG;
+import flash.*;
+import flash.geom.Rectangle;
 import flash.net.FileFilter;
+import flash.text.TextField;
+import flixel.FlxBasic;
+import flixel.FlxG;
 import flixel.FlxSprite;
+import flixel.addons.display.FlxBackdrop;
 import flixel.addons.display.FlxGridOverlay;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.addons.ui.FlxButtonPlus;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.math.FlxMath;
-import haxe.io.Bytes;
-import flixel.text.FlxText;
-import flash.*;
-import flixel.util.FlxColor;
-import flixel.tweens.FlxTween;
-import lime.utils.Assets;
-import openfl.events.Event;
-import openfl.events.IOErrorEvent;
 import flixel.system.FlxSound;
-import openfl.utils.Assets as OpenFlAssets;
-import sys.io.File;
-import sys.FileSystem;
+import flixel.text.FlxText;
+import flixel.tweens.FlxTween;
+import flixel.ui.FlxButton;
+import flixel.util.FlxColor;
 import haxe.Json;
 import haxe.format.JsonParser;
+import haxe.io.Bytes;
+import lime.utils.Assets;
 import openfl.display.BitmapData;
-import flash.geom.Rectangle;
-import flixel.ui.FlxButton;
-import flixel.FlxBasic;
+import openfl.events.Event;
+import openfl.events.IOErrorEvent;
+import openfl.utils.Assets as OpenFlAssets;
+import sys.FileSystem;
+import sys.io.File;
 import sys.io.File;
 
+using StringTools;
 /* import openfl.net.FileReference;
 	import openfl.*;
 	import sys.io.*;
@@ -40,13 +42,14 @@ import sys.io.File;
 	import haxe.zip.Entry;
 	import haxe.zip.Uncompress;
 	import haxe.zip.Writer; */
-using StringTools;
 
 class ModsMenuState extends MusicBeatState
 {
 	var mods:Array<ModMetadata> = [];
 
 	static var changedAThing = false;
+
+	var timeElapsed:Float = 0;
 
 	var bg:FlxSprite;
 	var intendedColor:Int;
@@ -57,8 +60,10 @@ class ModsMenuState extends MusicBeatState
 	var descriptionTxt:FlxText;
 	var needaReset = false;
 
+	var bgBackdrop:FlxBackdrop;
+
 	private static var curSelected:Int = 0;
-	public static var defaultColor:FlxColor = 0xFF665AFF;
+	public static var defaultColor:FlxColor = 0xFFFF5AC0;
 
 	var buttonDown:FlxButton;
 	var buttonTop:FlxButton;
@@ -92,6 +97,12 @@ class ModsMenuState extends MusicBeatState
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
 		bg.screenCenter();
+
+		bgBackdrop = new FlxBackdrop(Paths.image('checkeredBG', 'preload'), #if (flixel_addons < "3.0.0") 1, 1, true, true, #else XY, #end 1, 1);
+		bgBackdrop.alpha = 0;
+		bgBackdrop.antialiasing = true;
+		bgBackdrop.scrollFactor.set();
+		add(bgBackdrop);
 
 		noModsTxt = new FlxText(0, 0, FlxG.width, "NO MODS INSTALLED\nPRESS BACK TO EXIT AND INSTALL A MOD", 48);
 		if (FlxG.random.bool(0.1))
@@ -481,6 +492,12 @@ class ModsMenuState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
+		var scrollSpeed:Float = 50;
+		bgBackdrop.x -= scrollSpeed * elapsed;
+		bgBackdrop.y -= scrollSpeed * elapsed;
+
+		timeElapsed += elapsed;
+
 		if (noModsTxt.visible)
 		{
 			noModsSine += 180 * elapsed;

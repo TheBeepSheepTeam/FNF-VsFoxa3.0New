@@ -1,6 +1,6 @@
 package;
 
-// taken from vs marcello
+// taken from vs marcello lol
 import Controls;
 import openfl.Lib;
 import flash.text.TextField;
@@ -10,6 +10,7 @@ import flixel.addons.display.FlxGridOverlay;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.input.keyboard.FlxKey;
 import flixel.math.FlxMath;
+import flixel.addons.display.FlxBackdrop;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import lime.utils.Assets;
@@ -22,6 +23,10 @@ class SaveFileState extends MusicBeatState
 	var curSelected:Int = 0;
 
 	public static var saveFile:FlxSave;
+
+	var bgBackdrop:FlxBackdrop;
+
+	var timeElapsed:Float = 0;
 
 	var emptySave:Array<Bool> = [true, true, true];
 
@@ -36,7 +41,16 @@ class SaveFileState extends MusicBeatState
 
 	override function create()
 	{
+		Paths.clearStoredMemory();
+		Paths.clearUnusedMemory();
+
 		var menuBG:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
+
+		bgBackdrop = new FlxBackdrop(Paths.image('checkeredBG', 'preload'), #if (flixel_addons < "3.0.0") 1, 1, true, true, #else XY, #end 1, 1);
+		bgBackdrop.alpha = 0;
+		bgBackdrop.antialiasing = true;
+		bgBackdrop.scrollFactor.set();
+		add(bgBackdrop);
 
 		for (i in 0...3)
 		{
@@ -78,6 +92,12 @@ class SaveFileState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
+		var scrollSpeed:Float = 50;
+		bgBackdrop.x -= scrollSpeed * elapsed;
+		bgBackdrop.y -= scrollSpeed * elapsed;
+
+		timeElapsed += elapsed;
+
 		super.update(elapsed);
 
 		if (!selectedSomething)

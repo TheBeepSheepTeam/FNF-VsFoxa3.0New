@@ -10,12 +10,17 @@ import lime.app.Application;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
+import flixel.addons.display.FlxBackdrop;
 
 class FlashingState extends MusicBeatState
 {
 	public static var leftState:Bool = false;
 
+	var bgBackdrop:FlxBackdrop;
+
 	var warnText:FlxText;
+
+	var timeElapsed:Float = 0;
 
 	override function create()
 	{
@@ -29,6 +34,12 @@ class FlashingState extends MusicBeatState
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
 
+		bgBackdrop = new FlxBackdrop(Paths.image('checkeredBG', 'preload'), #if (flixel_addons < "3.0.0") 1, 1, true, true, #else XY, #end 1, 1);
+		bgBackdrop.alpha = 0;
+		bgBackdrop.antialiasing = true;
+		bgBackdrop.scrollFactor.set();
+		add(bgBackdrop);
+
 		warnText = new FlxText(0, 0, FlxG.width, "Hey, watch out!\n
 			This Mod contains some flashing lights!\n
 			Press ENTER to disable them now or go to Options Menu.\n
@@ -41,6 +52,11 @@ class FlashingState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
+		var scrollSpeed:Float = 50;
+		bgBackdrop.x -= scrollSpeed * elapsed;
+		bgBackdrop.y -= scrollSpeed * elapsed;
+
+		timeElapsed += elapsed;
 		if (!leftState)
 		{
 			var back:Bool = controls.BACK;

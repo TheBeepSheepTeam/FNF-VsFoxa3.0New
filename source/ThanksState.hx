@@ -8,12 +8,17 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
+import flixel.addons.display.FlxBackdrop;
 import lime.app.Application;
 
 // taken from the old foxa-dev repo, just modified it a little bit
 class ThanksState extends MusicBeatState
 {
 	public static var leftState:Bool = false;
+
+	var bgBackdrop:FlxBackdrop;
+
+	var timeElapsed:Float = 0;
 
 	public static var needVer:String = "IDFK LOL";
 	public static var currChanges:String = "dk";
@@ -41,6 +46,12 @@ class ThanksState extends MusicBeatState
 		bg.screenCenter();
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
+
+		bgBackdrop = new FlxBackdrop(Paths.image('checkeredBG', 'preload'), #if (flixel_addons < "3.0.0") 1, 1, true, true, #else XY, #end 1, 1);
+		bgBackdrop.alpha = 0;
+		bgBackdrop.antialiasing = true;
+		bgBackdrop.scrollFactor.set();
+		add(bgBackdrop);
 
 		var foxaLogo:FlxSprite = new FlxSprite(FlxG.width, 0).loadGraphic(Paths.image('foxaEngineLogo'));
 		foxaLogo.scale.y = 0.3;
@@ -94,6 +105,12 @@ class ThanksState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
+		var scrollSpeed:Float = 50;
+		bgBackdrop.x -= scrollSpeed * elapsed;
+		bgBackdrop.y -= scrollSpeed * elapsed;
+
+		timeElapsed += elapsed;
+
 		if (controls.ACCEPT)
 		{
 			leftState = true;

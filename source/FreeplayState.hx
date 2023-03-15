@@ -13,6 +13,7 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
+import flixel.addons.display.FlxBackdrop;
 import flixel.tweens.FlxTween;
 import lime.utils.Assets;
 import flixel.system.FlxSound;
@@ -36,7 +37,10 @@ class FreeplayState extends MusicBeatState
 
 	private static var lastDifficultyName:String = '';
 
+	var timeElapsed:Float = 0;
+	
 	var scoreBG:FlxSprite;
+	var bgBackdrop:FlxBackdrop;
 	var scoreText:FlxText;
 	var diffText:FlxText;
 	var countText:FlxText;
@@ -56,8 +60,8 @@ class FreeplayState extends MusicBeatState
 
 	override function create()
 	{
-		// Paths.clearStoredMemory();
-		// Paths.clearUnusedMemory();
+		Paths.clearStoredMemory();
+		Paths.clearUnusedMemory();
 
 		persistentUpdate = true;
 		PlayState.isStoryMode = false;
@@ -111,6 +115,12 @@ class FreeplayState extends MusicBeatState
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
 		bg.screenCenter();
+
+		bgBackdrop = new FlxBackdrop(Paths.image('checkeredBG', 'preload'), #if (flixel_addons < "3.0.0") 1, 1, true, true, #else XY, #end 1, 1);
+		bgBackdrop.alpha = 0;
+		bgBackdrop.antialiasing = true;
+		bgBackdrop.scrollFactor.set();
+		add(bgBackdrop);
 
 		grpSongs = new FlxTypedGroup<Alphabet>();
 		add(grpSongs);
@@ -255,6 +265,12 @@ class FreeplayState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
+		var scrollSpeed:Float = 50;
+		bgBackdrop.x -= scrollSpeed * elapsed;
+		bgBackdrop.y -= scrollSpeed * elapsed;
+
+		timeElapsed += elapsed;
+
 		if (FlxG.sound.music.volume < 0.7)
 		{
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;

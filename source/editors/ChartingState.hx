@@ -74,7 +74,7 @@ class ChartingState extends MusicBeatState
 		['', "Nothing. Yep, that's right."],
 		[
 			'Dadbattle Spotlight',
-			"Used in Dad Battle,\nValue 1: 0/1 = ON/OFF,\n2 = Target Dad\n3 = Target BF"
+			"Used in Dad Battle,\nValue 1: 0/1 = ON/OFF,\n2 = Target Dad\n3 = Target BF\n \nWill not work with any other week but Week 1."
 		],
 		[
 			'Hey!',
@@ -86,7 +86,7 @@ class ChartingState extends MusicBeatState
 		],
 		[
 			'Philly Glow',
-			"Exclusive to Week 3\nValue 1: 0/1/2 = OFF/ON/Reset Gradient\n \nNo, i won't add it to other weeks."
+			"Exclusive to Week 3\nValue 1: 0/1/2 = OFF/ON/Reset Gradient\n \nNo, I won't add it to other weeks."
 		],
 		['Kill Henchmen', "For Mom's songs, don't use this please, i love them :("],
 		[
@@ -299,7 +299,7 @@ class ChartingState extends MusicBeatState
 			curSec = _song.notes.length - 1;
 
 		FlxG.mouse.visible = true;
-		// FlxG.save.bind('funkin', CoolUtil.getSavePath());
+		FlxG.save.bind('funkinFoxa', CoolUtil.getSavePath());
 
 		tempBpm = _song.bpm;
 
@@ -381,8 +381,8 @@ class ChartingState extends MusicBeatState
 		{
 			var tipText:FlxText = new FlxText(UI_box.x, UI_box.y + UI_box.height + 8, 0, tipTextArray[i], 16);
 			tipText.y += i * 12;
-			tipText.setFormat(Paths.font("vcr.ttf"), 14, FlxColor.WHITE, LEFT /*, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK*/);
-			// tipText.borderSize = 2;
+			tipText.setFormat(Paths.font("vcr.ttf"), 14, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+			tipText.borderSize = 2;
 			tipText.scrollFactor.set();
 			add(tipText);
 		}
@@ -502,14 +502,14 @@ class ChartingState extends MusicBeatState
 
 		var clear_events:FlxButton = new FlxButton(320, 310, 'Clear events', function()
 		{
-			openSubState(new Prompt('This action will clear current progress.\n\nProceed?', 0, clearEvents, null, ignoreWarnings));
+			openSubState(new Prompt('This action will clear current event progress.\n\nProceed?', 0, clearEvents, null, ignoreWarnings));
 		});
 		clear_events.color = FlxColor.RED;
 		clear_events.label.color = FlxColor.WHITE;
 
 		var clear_notes:FlxButton = new FlxButton(320, clear_events.y + 30, 'Clear notes', function()
 		{
-			openSubState(new Prompt('This action will clear current progress.\n\nProceed?', 0, function()
+			openSubState(new Prompt('This action will clear current chart progress.\n\nProceed?', 0, function()
 			{
 				for (sec in 0..._song.notes.length)
 				{
@@ -748,7 +748,7 @@ class ChartingState extends MusicBeatState
 		var tab_group_section = new FlxUI(null, UI_box);
 		tab_group_section.name = 'Section';
 
-		check_mustHitSection = new FlxUICheckBox(10, 15, null, null, "Must hit section", 100);
+		check_mustHitSection = new FlxUICheckBox(10, 15, null, null, "Must hit section?", 100);
 		check_mustHitSection.name = 'check_mustHit';
 		check_mustHitSection.checked = _song.notes[curSec].mustHitSection;
 
@@ -1428,7 +1428,7 @@ class ChartingState extends MusicBeatState
 		blockPressWhileTypingOnStepper.push(metronomeStepper);
 		blockPressWhileTypingOnStepper.push(metronomeOffsetStepper);
 
-		disableAutoScrolling = new FlxUICheckBox(metronome.x + 120, metronome.y, null, null, "Disable Autoscroll (Not Recommended)", 120, function()
+		disableAutoScrolling = new FlxUICheckBox(metronome.x + 120, metronome.y, null, null, "Disable Autoscroll (NR)", 120, function()
 		{
 			FlxG.save.data.chart_noAutoScroll = disableAutoScrolling.checked;
 		});

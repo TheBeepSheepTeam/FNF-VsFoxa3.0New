@@ -20,6 +20,7 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import lime.app.Application;
 import Achievements;
+import flixel.addons.display.FlxBackdrop;
 import editors.MasterEditorMenu;
 import flixel.input.keyboard.FlxKey;
 import haxe.Json;
@@ -53,11 +54,15 @@ class MainMenuState extends MusicBeatState
 	private var camGame:FlxCamera;
 	private var camAchievement:FlxCamera;
 
+	var timeElapsed:Float = 0;
+
 	public static var firstStart:Bool = true;
 	public static var finishedFunnyMove:Bool = false;
 
 	var optionShit:Array<String> = [];
 	var linkArray:Array<Array<String>> = [];
+
+	var bgBackdrop:FlxBackdrop;
 
 	// var magenta:FlxSprite;
 	var camFollow:FlxObject;
@@ -73,6 +78,10 @@ class MainMenuState extends MusicBeatState
 		#if MODS_ALLOWED
 		Paths.pushGlobalMods();
 		#end
+
+		Paths.clearStoredMemory();
+		Paths.clearUnusedMemory();
+
 		WeekData.loadTheFirstEnabledMod();
 		menuJSON = Json.parse(Paths.getTextFromFile('images/mainmenu/menu_preferences.json'));
 
@@ -137,6 +146,12 @@ class MainMenuState extends MusicBeatState
 		bg.screenCenter();
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
+
+		bgBackdrop = new FlxBackdrop(Paths.image('checkeredBG', 'preload'), #if (flixel_addons < "3.0.0") 1, 1, true, true, #else XY, #end 1, 1);
+		bgBackdrop.alpha = 0;
+		bgBackdrop.antialiasing = true;
+		bgBackdrop.scrollFactor.set();
+		add(bgBackdrop);
 
 		camFollow = new FlxObject(0, 0, 1, 1);
 		camFollowPos = new FlxObject(0, 0, 1, 1);
@@ -270,6 +285,12 @@ class MainMenuState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
+		var scrollSpeed:Float = 50;
+		bgBackdrop.x -= scrollSpeed * elapsed;
+		bgBackdrop.y -= scrollSpeed * elapsed;
+
+		timeElapsed += elapsed;
+
 		if (FlxG.sound.music.volume < 0.8)
 		{
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;

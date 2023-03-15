@@ -2,6 +2,7 @@ import flixel.FlxSprite;
 import flixel.util.FlxColor;
 import flixel.FlxG;
 
+// week 3 only, will make it work with other stages soon!
 class PhillyGlowParticle extends FlxSprite
 {
 	var lifeTime:Float = 0;

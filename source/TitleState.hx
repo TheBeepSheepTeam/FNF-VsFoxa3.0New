@@ -67,7 +67,7 @@ class TitleState extends MusicBeatState
 	var textGroup:FlxGroup;
 	var ngSpr:FlxSprite;
 
-	var titleTextColors:Array<FlxColor> = [0xFF33FFFF, 0xFF3333CC];
+	var titleTextColors:Array<FlxColor> = [0xFFFF33C2, 0xFFCC3333];
 	var titleTextAlphas:Array<Float> = [1, .64];
 
 	var curWacky:Array<String> = [];
@@ -95,7 +95,7 @@ class TitleState extends MusicBeatState
 		Paths.pushGlobalMods();
 		#end
 
-		FlxG.save.bind('funkin', CoolUtil.getSavePath());
+		FlxG.save.bind('funkinFoxa', CoolUtil.getSavePath());
 		// PlayerSettings.init();
 
 		Paths.clearStoredMemory();

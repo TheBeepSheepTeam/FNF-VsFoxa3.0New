@@ -70,9 +70,13 @@ import sys.FileSystem;
 import sys.io.File;
 #end
 #if VIDEOS_ALLOWED
-#if (hxCodec >= "2.6.1") import hxcodec.MP4Handler as MP4Handler;
-#elseif (hxCodec == "2.6.0") import MP4Handler as MP4Handler;
-#else import vlc.MP4Handler; #end
+#if (hxCodec >= "2.6.1")
+import hxcodec.VideoHandler as MP4Handler;
+#elseif (hxCodec == "2.6.0")
+import VideoHandler as MP4Handler;
+#else
+import vlc.MP4Handler;
+#end
 #end
 #if LUA_ALLOWED
 import psychlua.DebugLuaText;
@@ -89,16 +93,16 @@ class PlayState extends MusicBeatState
 	public static var STRUM_X_MIDDLESCROLL = -278;
 
 	public static var ratingStuff:Array<Dynamic> = [
-		['You Suck!', 0.2], // From 0% to 19%
-		['Shit', 0.4], // From 20% to 39%
-		['Bad', 0.5], // From 40% to 49%
-		['Bruh', 0.6], // From 50% to 59%
-		['Meh', 0.69], // From 60% to 68%
-		['Nice', 0.7], // 69%
-		['Good', 0.8], // From 70% to 79%
-		['Great', 0.9], // From 80% to 89%
-		['Sick!', 1], // From 90% to 99%
-		['Perfect!!', 1] // The value on this one isn't used actually, since Perfect is always "1"
+		['Fuck You!', 0.2], // From 0% to 19%
+		['I feel your pain :skull:', 0.4], // From 20% to 39%
+		['Skill Issue', 0.5], // From 40% to 49%
+		['Cope and Seethe', 0.6], // From 50% to 59%
+		['Close Enough', 0.69], // From 60% to 68%
+		['Very Good', 0.7], // 69%
+		['Player at Best', 0.8], // From 70% to 79%
+		['YOOOOO', 0.9], // From 80% to 89%
+		['Upset Foxa', 1], // From 90% to 99%
+		['YOU DID AN FC OMG', 1] // The value on this one isn't used actually, since Perfect is always "1"
 	];
 
 	// event variables
@@ -237,7 +241,7 @@ class PlayState extends MusicBeatState
 	public var camOther:FlxCamera;
 	public var cameraSpeed:Float = 1;
 
-	var dialogue:Array<String> = ['blah blah blah', 'coolswag'];
+	var dialogue:Array<String> = ['blah blah blah', 'coolswag', 'test test test', 'TESTING', 'skull issue'];
 	var dialogueJson:DialogueFile = null;
 
 	var dadbattleBlack:BGSprite;

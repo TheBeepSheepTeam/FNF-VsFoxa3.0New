@@ -17,6 +17,7 @@ import flash.display.PNGEncoderOptions;
 import openfl.net.URLRequest;
 import openfl.utils.ByteArray;
 import sys.FileSystem;
+import flixel.addons.display.FlxBackdrop;
 import flixel.util.FlxTimer;
 import haxe.Json;
 import haxe.format.JsonParser;
@@ -46,9 +47,12 @@ class ModDownloadState extends MusicBeatState
 	public static var directory:String;
 
 	private var camMain:FlxCamera;
+	var bgBackdrop:FlxBackdrop;
 	private var camHUD:FlxCamera;
 	private var camInput:FlxCamera;
 	private var camBG:FlxCamera;
+
+	var timeElapsed:Float = 0;
 
 	public static var writer:Writer;
 
@@ -95,9 +99,15 @@ class ModDownloadState extends MusicBeatState
 
 		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
 		bg.scrollFactor.set();
-		bg.color = 0xFF665AFF;
+		bg.color = 0xFFD95AFF;
 		bg.cameras = [camBG];
 		add(bg);
+
+		bgBackdrop = new FlxBackdrop(Paths.image('checkeredBG', 'preload'), #if (flixel_addons < "3.0.0") 1, 1, true, true, #else XY, #end 1, 1);
+		bgBackdrop.alpha = 0;
+		bgBackdrop.antialiasing = true;
+		bgBackdrop.scrollFactor.set();
+		add(bgBackdrop);
 
 		var swagBG:FlxSprite = new FlxSprite().makeGraphic(700, 700, FlxColor.BLACK, false);
 		swagBG.screenCenter();
@@ -246,6 +256,12 @@ class ModDownloadState extends MusicBeatState
 
 	override public function update(elapsed:Float)
 	{
+		var scrollSpeed:Float = 50;
+		bgBackdrop.x -= scrollSpeed * elapsed;
+		bgBackdrop.y -= scrollSpeed * elapsed;
+
+		timeElapsed += elapsed;
+
 		if (coolParsed != null)
 		{
 			var coolFile = 'mods/${coolParsed._aFiles[0]._sFile}';

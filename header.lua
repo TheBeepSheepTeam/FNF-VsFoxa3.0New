@@ -544,7 +544,7 @@ defaultOpponentStrumY2 = 0
 --- The inital Y position for the Right Opponent Strum
 ---@type number
 defaultOpponentStrumY3 = 0
---- The current version of Psych Engine being used
+--- The current version of Vs. Foxa being used
 ---@type number
 version = 0
 ---@type "windows" | "linux" | "mac" | "browser" | "android" | "unknown" The current build target.

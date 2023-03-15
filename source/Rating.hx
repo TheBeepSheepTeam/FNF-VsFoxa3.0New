@@ -2,6 +2,8 @@ package;
 
 import Conductor;
 
+// seperated from PlayState
+
 class Rating
 {
 	public var name:String = '';
